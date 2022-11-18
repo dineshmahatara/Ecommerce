@@ -99,6 +99,11 @@ Trees
         branch 
 
 
+
 Git commands
     -> git init 
         - to initialize git repo in local
+        - this is one time command
+    -> git remote add <name> <url>
+        where <name> is the name for the <url>
+            and <url> is repo link
