@@ -97,3 +97,8 @@ online git =>
 Trees 
     Node Trunk (main/ master) 
         branch 
+
+
+Git commands
+    -> git init 
+        - to initialize git repo in local
