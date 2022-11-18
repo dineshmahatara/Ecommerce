@@ -1,0 +1,99 @@
+classRoom Code: t42axf3
+
+
+- Node js 
+- Web Tech 
+
+    Client-Server Architecture 
+    - Client    
+        - Request create
+        - Browser / Application 
+    - Server
+        - Response sender
+
+
+Browser open 
+    -> ur: www.facebook.com / google.com 
+
+
+    protocol://domain.tld:portNo/params/...?querystring 
+
+
+    https://www.youtube.com/watch/?v=videoid&time=1000
+
+
+    http/ https => 80 / 443
+    smtp - 25
+    ftp - 21
+    sftp - 22
+    imap/pop => 465, 587
+    local services => 3000
+    
+
+    0-2pow16 -1 
+    0-65535
+
+    a. DNS conversion 
+        ip address 
+            127.0.0.1
+            localhost
+    b. Sends a request 
+        - get, post, put, patch, delete 
+    c. Server Process the request   
+        - url 
+        - method 
+        - payload
+        -> Process / manipulate 
+        - Response 
+            -> API -> JSON 
+            -> Integration -> HTML 
+
+    d. Client Process the Response 
+        - Status Code 
+            - 1x-8x
+            - 200, 201 
+        - headers 
+        - data 
+        - browser response 
+
+GIT 
+    sprint 
+        7-15 days 
+        a team = 7-9 
+
+
+
+
+    7 - 
+
+Day 1 
+
+A -------> 3 days index.js
+B           ---------------> 5 days  index.js
+C                           -------------------------> 7 days
+
+
+Local / Development ===> Git service
+online git => 
+            gitlab 
+            github
+            bitbucket
+
+// terminal => ssh-keygen command run 
+// passphrase -> 
+// .../.ssh/id_rsa.pub
+
+// 23 memebrs 
+## Local codes but not in the Repo
+    => 
+
+## I do not have codes on local, but repo exists
+    =>
+
+## Local codes exists as well as repo do exists
+    => 
+
+
+Trees 
+    Node Trunk (main/ master) 
+        branch 
