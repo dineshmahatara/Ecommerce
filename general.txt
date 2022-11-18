@@ -109,3 +109,13 @@ Git commands
     -> git remote add <name> <url>
         where <name> is the name for the <url>
             and <url> is repo link
+    -> git add .
+        - to add all the changes for staging 
+    -> git commit -m "Your message"
+        - to stage all the current changes
+
+    -> git pull <remote_name> <remote_branch>
+        - pulls the changes from remote 
+    -> git push <remote_name> <local_branch>:<remote_branch>
+        git push origin dev
+    // dev => main
