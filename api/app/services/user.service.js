@@ -9,7 +9,8 @@ class UserService{
                 password: Joi.string().min(8).required(),
                 address: Joi.string(),
                 role: Joi.string().required(),
-                status: Joi.string().required()    
+                status: Joi.string().required(),
+                image: Joi.string().empty()
             })
             let response = userSchema.validate(data);
             if(response.error) {

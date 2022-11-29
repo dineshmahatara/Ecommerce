@@ -8,7 +8,13 @@ class AuthController{
         try{
             let body = req.body;
             // user svc
+            if(req.file){
+                body.image = req.file.filename
+            }
             this.user_svc.validateUser(body);
+            // DB store ===> status ---> inactive , act_token----> random str
+            // email send ----> url ---> act_token
+            // FE url click ----> FE ----> Req Be URL Token 
             
             res.json({
                 result: body,
