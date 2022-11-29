@@ -119,6 +119,23 @@ Git commands
     -> git push <remote_name> <local_branch>:<remote_branch>
         git push origin dev
     // dev => main
-
-
     
+    // Sourcetree
+
+
+Node js is not a  framework but it's a runtime environment
+
+18-19, 12 >
+
+node 
+npm => Node package manager
+
+-> string encrypt -> hash function 
+
+date picker 
+    -> 1000+
+
+http package
+
+MVC Pattern 
+    - Model View Controller 
