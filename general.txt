@@ -139,3 +139,80 @@ http package
 
 MVC Pattern 
     - Model View Controller 
+
+
+create an app in express to register and login a user using OTP.
+- Create an endpoint to register a user 
+    - stroe email, name, otp 
+- Create an endpoint to login the user 
+    - take email only as a input 
+- Create an endpoint to verify OTP 
+    - take otp and email as value
+- create an endpoint to access only if logged in 
+
+For Login Flow: 
+    - ask user to input email 
+    - Verify the email 
+    - Generate a random number of 4 digit and update the selected user's table to store the otp
+    - Send the OTP to email address of the user 
+    - Verify the otp is of that user or not 
+    - if otp verified build one middleware to verify the logged in user
+    - Access the endpoint after login 
+
+FOr the submission, 
+    Create a repo on github, and assign the repo to this email: 
+        sandesh.bhattarai79@gmail.com, 
+    Push the changes with proper commit messages. 
+
+
+=> Create server => 
+    - Create a dir 
+        - get in that dir
+            - npm init 
+            - npm i express 
+        - create a 
+                app.js 
+                    - express require
+                    - express app create 
+                    - app port listen 
+                package.json 
+                    start "nodemon app.js"
+                np start 
+                - routes 
+                    index.js
+                        - router instance 
+                            module.exports = router;
+                        mount to app.js using middleware
+                        - develop routes 
+                            router.post('/register', );
+                - app 
+                    - controller 
+                        auth.controller.js -> 
+                        let data = [
+                            {
+                                name: "",
+                                email: "a@b.com",
+                                otp: "1234",
+                            }
+                        ]
+                        class AuthController{
+                            registerFunc = (req, res, next) => {
+                                // email 
+                                validate-> your email has been registered
+                            }
+
+                            loginFunc = (req, res, next) => {
+
+                            }
+
+                            verifyToken = (req, res, next) => {
+                                email, otp 
+
+                            }
+                        }
+CRUD operation 
+
+
+start menu click 
+
+    edit system envirio

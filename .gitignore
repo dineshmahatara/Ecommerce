@@ -2,3 +2,4 @@ node-intro/node_modules
 api/node_modules
 api/public/*
 basics/node_modules
+api-gen/node_modules

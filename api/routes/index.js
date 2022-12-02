@@ -1,7 +1,17 @@
 const express = require("express")
-const app_routes = express();
+const app_routes = express.Router();
+
 const auth_routes = require("./auth.routes");
 const cat_routes = require("./category.routes");
+
+// http://localhost:3005
+app_routes.get("/", (req, res, next) => {
+    // 
+    // html 
+    res.render("home")
+    // res.render("home");
+})
+
 
 
 app_routes.use(auth_routes)
