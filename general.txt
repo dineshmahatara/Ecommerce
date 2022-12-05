@@ -216,3 +216,81 @@ CRUD operation
 start menu click 
 
     edit system envirio
+
+Protocol 
+    -> mysql => 3306, pgsql => 5432, 
+    => mongodb => 27017
+Host: 
+    => locahost/127.0.0.1
+Auth: 
+    user: 
+    password: 
+DB Name: 
+    ...
+
+    mongodb://<username>:<password>@host:port/dbName?options
+    e.g.
+        mongodb://localhost:27017/mern15
+    
+CRUD Operations 
+    -> Create
+        - Db, Table, Data  
+    -> Read 
+        - Table Data 
+    -> Update 
+        - Data 
+    -> Delete
+        - Data
+
+
+User: mern15
+pwd: TxWG5O1vOWghFOOu
+
+RDBMS 
+
+orders 
+----------
+id  name        product         price       qty         amount          entered_by
+-----------------------------------------------------------------------------------------
+1   Ram         iPhone 12       120000      1           120000          Shyam 
+-----------------------------------------------------------------------------------------
+2   ram         iphone12        128000      2           200000          shyam 
+-----------------------------------------------------------------------------------------
+3   Ram         iphone12        120000      1           120000          shyam
+
+
+users                           products 
+----------                  -----------------------------------
+id      name                id      name            price 
+---------------             -----------------------------------
+1       Ram                 1       iPhone 12       120000
+---------------
+2       Ram 
+---------------
+3       Shyam
+
+
+orders 
+-------------------------------------------------------------------------------------
+id      user_id         product_id          qty         discount    entered_by_id
+-------------------------------------------------------------------------------------
+1       1               1                   1               0       3
+-------------------------------------------------------------------------------------
+2       2               1                   2               40000   3
+-------------------------------------------------------------------------------------
+3       1               1                   1               0       3
+
+
+ODM => Object Document Modelling 
+ORM => Object Relational Modelling 
+
+=> 
+    - Connection establishment with DB Serve 
+    - Select DB 
+    - Query in DB 
+    - Data fetch/ endpoint
+
+Core Driver, 
+    => Mongodb 
+ODM Provider
+    => Mongoose

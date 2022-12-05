@@ -6,6 +6,14 @@ const Config ={
         PASS: "f3e619abb8b199",
         FROM: "noreply@test.com",
         TLS: false
+    },
+    DB: {
+        PROTOCOL: "mongodb",
+        HOST: "127.0.0.1",
+        NAME: "mern15",
+        USER: "",
+        PWD: "",
+        PORT: 27017
     }
 }
 
