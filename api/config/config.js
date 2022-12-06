@@ -1,4 +1,5 @@
 const Config ={
+    ENVIRONMENT: "dev",
     SMTP: {
         HOST: "smtp.mailtrap.io",
         PORT: 465,
