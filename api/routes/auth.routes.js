@@ -14,6 +14,7 @@ app_routes.post("/logout",(req, res, next) => {
     // login check 
     let loggedIn = true;
     if(loggedIn){
+        // req.data= ""
         next();
     } else {
         next({status: 401, msg: "User not logged in"})
