@@ -3,6 +3,8 @@ const nodemailer = require("nodemailer");
 const { SMTP } = require("../../config/config");
 const {MongoClient} = require("mongodb");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const Config = require("../../config/config");
 
 
 class AuthController{
@@ -40,8 +42,15 @@ class AuthController{
             let loggedInUser = await this.user_svc.getUserByEmail(data);
             if(loggedInUser){
                 if(bcrypt.compareSync(data.password, loggedInUser.password)){
+                    let token = jwt.sign({
+                        user_id: loggedInUser._id
+                    }, Config.JWT_SECRET);
+
                     res.json({
-                        result: loggedInUser, 
+                        result: {
+                            user: loggedInUser,
+                            access_token: token
+                        }, 
                         status: true, 
                         msg: "Logged in successfully"
                     })
@@ -61,6 +70,15 @@ class AuthController{
     logout =  (req, res, next) => {
 
     }
+
+    getLoggedInUser = (req, res, next) => {
+        res.json({
+            result: req.auth_user,
+            status: true,
+            msg: "Your Profile.."
+        })
+    }
+
 }
 
 module.exports = AuthController;

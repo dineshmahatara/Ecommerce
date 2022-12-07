@@ -15,7 +15,8 @@ const Config ={
         USER: "",
         PWD: "",
         PORT: 27017
-    }
+    },
+    JWT_SECRET: "XYZABC123"
 }
 
 module.exports = Config;

@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { ObjectId } = require("mongodb");
 const DbService = require("./db.service");
 
 class UserService extends DbService{
@@ -41,6 +42,18 @@ class UserService extends DbService{
             return result;
             //console.log(result);
         } catch(err){
+            throw err;
+        }
+    }
+
+    getUserById = async (id) => {
+        try{
+
+            let user = await this.db.collection('users').findOne({
+                _id: ObjectId(id)
+            });
+            return user;
+        }catch(err) {
             throw err;
         }
     }

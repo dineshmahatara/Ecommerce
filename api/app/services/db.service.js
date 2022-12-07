@@ -17,6 +17,7 @@ class DbService{
             }
             let client = await MongoClient.connect(DB_URL)
             this.db = client.db(DB.NAME);
+            
         } catch(err) {
             throw err;
         }
