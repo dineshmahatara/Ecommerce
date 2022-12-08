@@ -7,6 +7,8 @@ const auth = async (req, res, next) => {
     try{
         let token = null;
         //console.log(req.headers);
+        // bearer token
+        // token
         if(req.headers['authorization']){
             token = req.headers['authorization'];
         } else if(req.headers['x-xsrf-token']){

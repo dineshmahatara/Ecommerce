@@ -42,6 +42,7 @@ class AuthController{
             let loggedInUser = await this.user_svc.getUserByEmail(data);
             if(loggedInUser){
                 if(bcrypt.compareSync(data.password, loggedInUser.password)){
+                    
                     let token = jwt.sign({
                         user_id: loggedInUser._id
                     }, Config.JWT_SECRET);

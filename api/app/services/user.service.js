@@ -26,6 +26,9 @@ class UserService extends DbService{
 
     createUser = async (data) => {
         try {
+            // TODO: Find user by email
+            // if user does not exists run the below
+            // else throw exception 
             return await this.db.collection('users').insertOne(data);
         } catch(excep){
             throw excep

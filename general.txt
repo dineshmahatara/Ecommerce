@@ -294,3 +294,48 @@ Core Driver,
     => Mongodb 
 ODM Provider
     => Mongoose
+
+
+plural table name 
+    - users 
+Model name is always singular
+    - User 
+
+A row in a table 
+    - is an instance of a model
+
+Ecommerce 
+    - To create a cart 
+    - User Authorization and Authentication
+    - Catelog Creation 
+    - Product Creation
+    - Product Atrributes 
+    - Payment Gateways 
+    - Offers 
+    - Ads 
+    - User Profile and Personalization 
+    - Delivery 
+    - Multivendor 
+
+- Data 
+    - Product
+    - User 
+    - Role 
+    - Brand 
+    - Images 
+    - Category 
+    - Inventory
+    - Transactionn 
+    - Offer 
+    - Ads 
+
+
+SDLC => Software Development Lifecycle 
+    - Requirement gathering and analysis 
+    - Design and Development 
+        - Application Str 
+        - Database Structure 
+            - Schema Diagram
+                - Entitiy 
+
+- MIS Application 
