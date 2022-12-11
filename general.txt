@@ -339,3 +339,16 @@ SDLC => Software Development Lifecycle
                 - Entitiy 
 
 - MIS Application 
+
+
+Schema ===> 
+    - Database design 
+    - Collection
+        - Data -> Document 
+ORM 
+ODM 
+    - Table name => plural name 
+        - users 
+    - Model Name => singular name 
+        - User 
+    - Every row of a table is an instance of Model

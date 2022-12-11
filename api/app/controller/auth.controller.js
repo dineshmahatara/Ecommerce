@@ -14,6 +14,10 @@ class AuthController{
     registerUser = async (req, res, next) => {
         try{
             let body = req.body;
+            // let body = {
+            //     name: req.body.name,
+
+            // };
             // user svc
             if(req.file){
                 body.image = req.file.filename
@@ -21,6 +25,7 @@ class AuthController{
             this.user_svc.validateUser(body);
             // abcd => password => encrypt
             body.password = bcrypt.hashSync(body.password, 10)
+            // email already resigter
             let data = await this.user_svc.createUser(body);
 
             res.json({

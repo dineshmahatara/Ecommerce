@@ -10,10 +10,18 @@ if(ENVIRONMENT === 'dev'){
 
 }
 mongoose.set('strictQuery', false)
-mongoose.connect(DB_URL, (err) => {
+mongoose.connect(DB_URL,{
+    autoCreate: true, 
+    autoIndex: true
+}, (err) => {
     if(err) {
         console.log("DB connection erro: ", err);
     } else {
         console.log("DB connected successfully....")
     }
 });
+
+// users , email -> not unique
+    // => data store
+    // unique => true
+        // email 

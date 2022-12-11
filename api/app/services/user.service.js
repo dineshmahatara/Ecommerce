@@ -1,8 +1,9 @@
 const Joi = require("joi");
-const { ObjectId } = require("mongodb");
-const DbService = require("./db.service");
+// const { ObjectId } = require("mongodb");
+// const DbService = require("./db.service");
+const UserModel = require("../model/user.model");
 
-class UserService extends DbService{
+class UserService{
     validateUser = (data) => {
         try{
             let userSchema = Joi.object({
@@ -26,20 +27,25 @@ class UserService extends DbService{
 
     createUser = async (data) => {
         try {
-            // TODO: Find user by email
-            // if user does not exists run the below
-            // else throw exception 
-            return await this.db.collection('users').insertOne(data);
+            let user_obj = new UserModel(data);
+            return await user_obj.save(); 
+            // return await UserModel.insert(data);  
+            // return await this.db.collection('users').insertOne(data);
         } catch(excep){
-            throw excep
+            if(excep.code === 11000){
+                let keys = Object.keys(excep.keyPattern);
+                throw keys.join(", ")+" should be unique";
+            } else {
+                throw excep
+            }
         }
     }
 
     getUserByEmail = async (data) => {
         try{
-            console.log(data);
+            // console.log(data);
             // SELECT * FROM users WHERE email = data.email AND password = data.password
-            let result = await this.db.collection("users").findOne({
+            let result = await UserModel.findOne({
                 email: data.email
             });
             return result;
@@ -52,9 +58,10 @@ class UserService extends DbService{
     getUserById = async (id) => {
         try{
 
-            let user = await this.db.collection('users').findOne({
-                _id: ObjectId(id)
-            });
+            // let user = await this.db.collection('users').findOne({
+            //     _id: ObjectId(id)
+            // });
+            let user = await UserModel.findById(id);
             return user;
         }catch(err) {
             throw err;
