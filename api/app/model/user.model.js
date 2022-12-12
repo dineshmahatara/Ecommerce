@@ -1,28 +1,6 @@
 const mongoose = require("mongoose");
-const NepalData = require("../../config/nepal-data.config");
-const AddressSchemaDef = new mongoose.Schema({
-    
-    state: {
-        type: String,
-        enum: NepalData.state
-    },
-    district: {
-        type: String,
-        enum: NepalData.district
-    },
-    municipality: {
-        type: String, 
-        enum: NepalData.municipality
-    },
-    ward: {
-        type: Number, 
-        min: 1,
-        max: 35
-    },
-    location: String
 
-})
-
+const commonSchema = require("./common.schema");
 const UserSchemaDef = new mongoose.Schema({
     name: {
         type: String, 
@@ -58,15 +36,7 @@ const UserSchemaDef = new mongoose.Schema({
     image: {
         type: String
     },
-    created_by: {
-        type: mongoose.Types.ObjectId,
-        ref: "User",
-        default: null
-    }
-},{
-    autoCreate: true,
-    autoIndex: true,
-    timestamps: true
-});
+    created_by: commonSchema.created_by
+}, commonSchema.trigger);
 const UserModel = mongoose.model("User", UserSchemaDef);
 module.exports = UserModel;

@@ -29,7 +29,7 @@ class AuthController{
             let data = await this.user_svc.createUser(body);
 
             res.json({
-                result: body,
+                result: data,
                 status: true,
                 msg: "Register data test"
             })
