@@ -7,7 +7,7 @@ const OrderSchemaDef = new mongoose.Schema({
         ref: "User",
         required: true
     },
-    cart: {
+    cart: [{
         product_id: {
             type: mongoose.Types.ObjectId,
             ref: "Product",
@@ -21,7 +21,7 @@ const OrderSchemaDef = new mongoose.Schema({
             type: Number,
             required: true
         }
-    },
+    }],
     sub_total: {
         type: Number,
         required: true

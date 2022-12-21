@@ -55,6 +55,9 @@ class ProductController{
             };
             let skip = (paginate.current_page-1) * paginate.per_page;
             let data = await this.product_svc.getProducts(skip, paginate.per_page);
+            
+            req.myevent.emit("hello", {name: "Sandesh"});
+
             res.json({
                 result: data, 
                 status: true, 

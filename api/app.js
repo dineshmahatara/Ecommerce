@@ -1,5 +1,32 @@
 const express = require("express");
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
+
+const events = require("events");
+const {Server} = require("socket.io");
+
+const io = new Server(server);
+io.on("connection", (socket) => {
+    console.log("I am inside connectin");
+    socket.on("hello", () => {
+        console.log("I am in hello")
+    })
+
+    // socket.emit("hello")
+})
+
+const myevent = new events.EventEmitter();
+
+
+myevent.on("hello", (data) => {
+    console.log(data);
+})
+app.use((req, res, next) => {
+    req.myevent = myevent;
+    next();
+})
+// myevent.emit("hello");
 
 require("./config/mongoose.config");
 
@@ -67,7 +94,7 @@ app.use((error, req, res, next) => {
         msg: msg
     })
 })
-app.listen(3005, 'localhost', (err) => {
+server.listen(3005, 'localhost', (err) => {
     if(!err) {
         console.log("Server is listening to port 3005");
         console.log("Press CTRL + C to disconnect to the server...")
