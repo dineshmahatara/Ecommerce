@@ -352,3 +352,34 @@ ODM
     - Model Name => singular name 
         - User 
     - Every row of a table is an instance of Model
+
+
+JS based Library or Framework 
+    - jquery 
+    - react 
+
+        - next js
+    - vue 
+    - angular 
+
+DOM 
+    - Document Object Model
+        - Real DOM 
+        - Virtual DOM 
+
+
+React js Vs React Native
+    - Components 
+
+Nodejs
+
+
+Input 
+    type => 
+        text, number, date, time, datetime, email, password, 
+        url, button, reset, submit, file, hidden, radio, checkbox, 
+        range, search, 
+
+
+        text => string 
+        email => string@string

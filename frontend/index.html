@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Login Page</h4>
+
+    <form>
+        <label for="email">Username: </label>
+        <input type="email" name="email" id="email" placeholder="Enter Your email..." value="sandesh@test.com" required/>
+
+        <label for="password">Password: </label>
+        <input type="password" onkeyup="checkPassword(event)" name="password" id="password" required placeholder="Enter your password"/>
+        <span id="password_err"></span>
+<!-- 
+        <br />
+        <label for="msg">Feedback:</label>
+        <textarea name="msg" id="msg"></textarea>
+
+        <br />
+        <label for="gender">Gender: </label>
+        <input type="radio" name="gender" value="male"> Male 
+        <input type="radio" name="gender" value="female"> Female 
+
+        <br/>
+        <label for="lang">Language: </label>
+        <input type="checkbox" name="lang" value="nepali"> Nepali
+        <input type="checkbox" name="lang" value="english"> English
+        <input type="checkbox" name="lang" value="newari"> Newari
+        <input type="checkbox" name="lang" value="other"> Other
+
+        <br>
+        <label for="dob">Date of Birth: </label>
+        <input type="date">
+        <input type="hidden" name="user_id" value="123"/>
+
+        <br>
+        <label for="range">Range: </label>
+        <input type="range" min="1000" max="100000">
+
+        <br>
+        <label for="gender">Gender(Dropdown):</label>
+        <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select> -->
+
+        <br>
+        <button type="reset">
+            cancel
+        </button>
+
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+    <script>
+
+        function checkPassword(e){
+            let value = e.target.value;
+            if(value.length < 8 || !(/[0-9A-Za-z]/.test(value))){
+                document.getElementById('password_err').innerHTML = "Password must be 8 character long...";
+            } else {
+                document.getElementById('password_err').innerHTML = "";
+            }
+        }
+    </script>
+</body>
+</html>
