@@ -1,0 +1,40 @@
+/***/
+.test{
+    text-align: left;
+    color: bisque;
+}
+/* h1{
+    text-align: center;
+    color: #870000;
+} */
+button{
+    color: #870000;
+}
+#testp{
+    color: aqua;
+    text-align: center;
+}
+.half-left{
+    width: 50%;
+    float: left;
+}
+@media(min-width: 568px){
+    .half-left{
+        width: 100%;
+    }
+}
+.logo{
+    position: absolute;
+    left: 2.69%;
+    right: 85.38%;
+    top: 34.44%;
+    bottom: 34.44%;
+}
+
+.col-sm-12{
+    background-color: #ffffff;
+}
+
+.bg-dark{
+    background-color: rgb(44, 44, 44) !important;
+}
