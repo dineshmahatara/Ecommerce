@@ -407,3 +407,22 @@ Form => Login / Register / Contact us
 List => 
     Card view 
     Table View 
+
+
+React Stores: 
+    * State 
+        - inside a component the data is being stored
+        - State can be assigned a new value/can be changed
+
+    * Props 
+        - incoming data to a component
+        - props are read only data
+
+Lifecycle 
+    -> Mounting Phase 
+    -> Updating Phase 
+    -> Unmounting Phase
+
+- constructor()
+- render() 
+- componentDidMount()
