@@ -2,7 +2,7 @@ import { Navbar, Nav, Container, Row, Col, Card } from "react-bootstrap"
 
 import { users } from "../../mock/data";
 import "./home.css";
-import logo from "../../assets/image/logo.png"
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,11 +11,21 @@ import banner2 from "../../assets/image/ecom-banner-2.jpeg";
 import banner3 from "../../assets/image/ecom-banner-3.png";
 import offerImage from "../../assets/image/offer-image.gif";
 import cat1 from "../../assets/image/cat-1.jpeg";
+import { HeaderComponent } from "../../components/home/home.component";
+import { useEffect, useState } from "react";
 
-import {FaMap, FaMapMarked, FaPhoneAlt} from "react-icons/fa";
+// username, password => single state variable => two state var 
+// input defaultValue= username , password 
+// <input type="email" defaultValue={data.email} />
 
 const HomePage = () => {
     // state maintain 
+    // banner state create 
+    // load => banner state null => skeleton/loading...
+    // API Call => Effect ===> State change / update
+    let [banner, setBanner] = useState();
+    let [loading, setLoading] = useState(true)
+    
     let data = users.result
     const settings = {
         dots: false,
@@ -27,57 +37,58 @@ const HomePage = () => {
         autoplay: true
     };
 
+    // useEffect(() =>{
+    //     console.log("I am always")
+    //     //This hook always calls whenever any state variable of this component load/updates
+    // });
+
+    useEffect(() => {
+        console.log("On first mount")
+        // to get the data from API 
+        let bannerData = [{
+            _id: "",
+            title: "Banner 1",
+            image: banner1,
+            link: ""
+        },{
+            _id: "",
+            title: "Banner 1",
+            image: banner2,
+            link: ""
+        },{
+            _id: "",
+            title: "Banner 1",
+            image: banner3,
+            link: ""
+        }];
+        setBanner(bannerData)
+        setLoading(false)
+        // this hook calls once on the component first mount
+    }, []);
+
+    useEffect(() => {
+        console.log("Only on loading state")
+        // when the loading state gets updated, this hook calls
+    },[loading, banner])
+
     return (<>
-        {/* Nav Section Start */}
-        <Navbar bg="light" variant="light" style={{maxHeight: "30px"}}>
-            <Container>
-                
-                <Row>
-                    <Col className="py-2">
-                        <span className="me-3"><FaPhoneAlt /> <span className="text-dark">+977 1234567890</span></span>
-                        <span><FaMapMarked /></span>
-                    </Col>
-                    
-                </Row>
-            </Container>
-        </Navbar>
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="#home">
-                    <img alt="Logo" src={logo} className="img img-fluid logo-image" />
-                </Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Category</Nav.Link>
-                    <Nav.Link href="#pricing">Products</Nav.Link>
-                </Nav>
-                <Nav>
-                    <Nav.Link href="/cart">Cart (0)</Nav.Link>
 
-                    <Nav.Link href="#pricing">Login</Nav.Link>
-                    <Nav.Link href="#pricing">Register</Nav.Link>
+        <HeaderComponent />        
 
-                    {/* <Nav.Link href="#pricing">Sandesh</Nav.Link>
-                        <Nav.Link href="#pricing">Logout</Nav.Link> */}
-                </Nav>
-            </Container>
-        </Navbar>
-        {/* Nav Section Ends */}
-
-        {/* Slider Banner */}
+       {
+        loading ? "Loading..." :  
         <Slider {...settings}>
-            <div>
-                <img src={banner1} alt="Slider" />
-            </div>
-            <div>
-                <img src={banner2} alt="Slider" />
-            </div>
-            <div>
-                <img src={banner3} alt="Slider" />
-            </div>
+            {
+                banner && banner.map((item, index) => (
+                    <div key={index}>
+                        <img src={item.image} alt={item.title}/>
+                    </div>
+                ))
+            }
 
         </Slider>
-        {/* Slider Banner */}
+        
+       }
 
         {/* Offer */}
         <Container>
