@@ -13,16 +13,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/css/global.css"
 
-import HomePage from './pages/home/home.page';
 
 import reportWebVitals from './reportWebVitals';
-import LoginPage from './pages/home/auth/login.page';
+import Routing from './routing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <HomePage name="Test User" data={{name: "Test data", address: "Kathmandu"}} /> */}
-    <LoginPage />
+    <Routing />
   </React.StrictMode>
 );
 
