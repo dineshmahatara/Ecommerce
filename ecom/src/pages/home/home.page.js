@@ -13,6 +13,7 @@ import offerImage from "../../assets/image/offer-image.gif";
 import cat1 from "../../assets/image/cat-1.jpeg";
 import { HeaderComponent } from "../../components/home/home.component";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 // username, password => single state variable => two state var 
 // input defaultValue= username , password 
@@ -115,9 +116,15 @@ const HomePage = () => {
                 <Row>
                     <Col>
                         <Card >
-                            <Card.Img variant="top" src={cat1} />
+                            <NavLink to="/category/1">
+                                <Card.Img variant="top" src={cat1} />
+                            </NavLink>
                             <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
+                                <Card.Title>
+                                    <NavLink to="/category/1">
+                                        Card Title
+                                    </NavLink>
+                                </Card.Title>
                             </Card.Body>
                         </Card>
                     </Col>
