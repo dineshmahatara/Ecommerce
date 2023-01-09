@@ -42,3 +42,24 @@ export const HeaderComponent = () => {
         {/* Nav Section Ends */}
     </>)
 }
+
+export const FooterComponent = () => {
+    // 
+    return (<>
+    <footer className="bg-dark">
+            <Container fluid>
+                <Row>
+                    <Col sm={12} lg={4}>
+                        First Col
+                    </Col>
+                    <Col sm={12} lg={4}>
+                        Second Col
+                    </Col>
+                    <Col sm={12} lg={4}>
+                        Third Col
+                    </Col>
+                </Row>
+            </Container>
+        </footer>
+    </>)
+}

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { HeaderComponent } from "../../../components/home/home.component"
@@ -21,28 +21,40 @@ const LoginPage = () => {
         e.preventDefault();
         console.log("Data: ", data)
         // TODO: API INTEGRATION
-        let user_detail = {result: {
-            user: {_id: 123, name: '', email: '', role: "admin"},
-            token: "jwttoken"
-        }};
+        let user_detail = {
+                result: {
+                        user: {_id: 123, name: '', email: '', role: "admin"},
+                        token: "jwttoken"
+                    }
+            };
         // localstorage, 
         // 5mb
         // string, no time limit
-        localStorage.setItem("_mern15_user", JSON.stringify(user_detail))
-        sessionStorage.setItem("_mern15_user", JSON.stringify(user_detail))
+        localStorage.setItem("_mern15_user", JSON.stringify(user_detail.result.user))
+        localStorage.setItem("_mern15_token", (user_detail.result.token))
+        // sessionStorage.setItem("_mern15_user", JSON.stringify(user_detail))
 
-        let local_store_user = localStorage.getItem('_mern15_user');
+        // let local_store_user = localStorage.getItem('_mern15_user');
 
         //
-        localStorage.clear();   // all clear 
-        localStorage.removeItem("_mern15_user")
+        // localStorage.clear();   // all clear 
+        // localStorage.removeItem("_mern15_user")
         // cookie => a domain can have 50 cookie, every cookie size is generally 4096 characters
         // string can only be stored, certain time
         //if succes =?? dashabord /admin , /customer, /seller
         navigate("/"+user_detail.result.user.role)
     }
+
+    useEffect(() => {
+        let token = localStorage.getItem("_mern15_token");
+        let user = JSON.parse(localStorage.getItem("_mern15_user"));
+
+        if(token) {
+            navigate('/'+user.role)
+        }
+    }, [])
+
     return (<>
-        <HeaderComponent />
         <Container>
             <Row>
                 <Col>

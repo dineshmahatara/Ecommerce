@@ -73,9 +73,6 @@ const HomePage = () => {
     },[loading, banner])
 
     return (<>
-
-        <HeaderComponent />        
-
        {
         loading ? "Loading..." :  
         <Slider {...settings}>
@@ -178,21 +175,7 @@ const HomePage = () => {
         </div>
 
 
-        <footer className="bg-dark">
-            <Container fluid>
-                <Row>
-                    <Col sm={12} lg={4}>
-                        First Col
-                    </Col>
-                    <Col sm={12} lg={4}>
-                        Second Col
-                    </Col>
-                    <Col sm={12} lg={4}>
-                        Third Col
-                    </Col>
-                </Row>
-            </Container>
-        </footer>
+        
     </>)
 }
 

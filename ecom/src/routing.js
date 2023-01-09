@@ -10,17 +10,27 @@ import ErrorPage from "./pages/common/error.page";
 import CategoryDetail from "./pages/home/category/category-detail.page";
 import AdminLayout from "./pages/layouts/admin.layout";
 import AdminDashboard from "./pages/admin/dashboard/admin-dashboard.page";
+import { AdminAccessControl } from "./components/access-control/access-control.component";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+import RegisterPage from "./pages/home/auth/register.page";
+import HomePageLayout from "./pages/layouts/home-page.layout";
 
 const Routing = () => {
     return (<>
+        <ToastContainer />
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<HomePageLayout />}>
 
-                <Route path="/category/:id" element={<CategoryDetail />}/>
+                    <Route index element={<HomePage />} />
+                    <Route path="login" element={<LoginPage />} />
+                    <Route path="register" element={<RegisterPage />} />
 
-                <Route path="/search/" element={<>Search Page</>} />
+                    <Route path="category/:id" element={<CategoryDetail />}/>
+
+                    <Route path="search/" element={<>Search Page</>} />
+                </Route>
 
 
                 {/* CMS  */}
@@ -37,7 +47,7 @@ const Routing = () => {
                         /api/v1/user/:id delete => Delete user
                     */}
                     
-                    <Route path="/admin" element={<AdminLayout />}>
+                    <Route path="/admin" element={<AdminAccessControl Component={<AdminLayout />} />}>
                         <Route index element={<AdminDashboard />} />
                         <Route path="user" element={<>User Outlet<Outlet /></>}>
                             <Route index element={<>List all user</>} />
