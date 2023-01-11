@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container, Row, Col, Card } from "react-bootstrap"
+import { Accordion, Tab, Nav, Container, Row, Col, Card } from "react-bootstrap"
 
 import { users } from "../../mock/data";
 import "./home.css";
@@ -11,7 +11,7 @@ import banner2 from "../../assets/image/ecom-banner-2.jpeg";
 import banner3 from "../../assets/image/ecom-banner-3.png";
 import offerImage from "../../assets/image/offer-image.gif";
 import cat1 from "../../assets/image/cat-1.jpeg";
-import { HeaderComponent } from "../../components/home/home.component";
+
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -26,7 +26,7 @@ const HomePage = () => {
     // API Call => Effect ===> State change / update
     let [banner, setBanner] = useState();
     let [loading, setLoading] = useState(true)
-    
+
     let data = users.result
     const settings = {
         dots: false,
@@ -51,12 +51,12 @@ const HomePage = () => {
             title: "Banner 1",
             image: banner1,
             link: ""
-        },{
+        }, {
             _id: "",
             title: "Banner 1",
             image: banner2,
             link: ""
-        },{
+        }, {
             _id: "",
             title: "Banner 1",
             image: banner3,
@@ -70,23 +70,23 @@ const HomePage = () => {
     useEffect(() => {
         console.log("Only on loading state")
         // when the loading state gets updated, this hook calls
-    },[loading, banner])
+    }, [loading, banner])
 
     return (<>
-       {
-        loading ? "Loading..." :  
-        <Slider {...settings}>
-            {
-                banner && banner.map((item, index) => (
-                    <div key={index}>
-                        <img src={item.image} alt={item.title}/>
-                    </div>
-                ))
-            }
+        {
+            loading ? "Loading..." :
+                <Slider {...settings}>
+                    {
+                        banner && banner.map((item, index) => (
+                            <div key={index}>
+                                <img src={item.image} alt={item.title} />
+                            </div>
+                        ))
+                    }
 
-        </Slider>
-        
-       }
+                </Slider>
+
+        }
 
         {/* Offer */}
         <Container>
@@ -174,8 +174,96 @@ const HomePage = () => {
             </Container>
         </div>
 
+        {/* <Container>
+            <Row>
+                <Col>
+                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                        <Row>
+                            <Col sm={3}>
+                                <Nav variant="pills" className="flex-column">
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+                            </Col>
+                            <Col sm={9}>
+                                <Tab.Content>
+                                    <Tab.Pane eventKey="first">
+                                        <Accordion defaultActiveKey="0">
 
-        
+                                            <Accordion.Item eventKey="0">
+                                                <Accordion.Header>Accordion Item #1</Accordion.Header>
+                                                <Accordion.Body>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                                    culpa qui officia deserunt mollit anim id est laborum.
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+
+                                            <Accordion.Item eventKey="1">
+                                                <Accordion.Header>Accordion Item #2</Accordion.Header>
+                                                <Accordion.Body>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                                    culpa qui officia deserunt mollit anim id est laborum.
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+
+
+                                            <Accordion.Item eventKey="2">
+                                                <Accordion.Header>Accordion Item #2</Accordion.Header>
+                                                <Accordion.Body>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                                    culpa qui officia deserunt mollit anim id est laborum.
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="second">
+                                        <Accordion defaultActiveKey="0">
+
+                                            <Accordion.Item eventKey="0">
+                                                <Accordion.Header>Accordion Item #1</Accordion.Header>
+                                                <Accordion.Body>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                                    culpa qui officia deserunt mollit anim id est laborum.
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+
+                                        </Accordion>
+                                    </Tab.Pane>
+                                </Tab.Content>
+                            </Col>
+                        </Row>
+                    </Tab.Container>
+
+
+
+                </Col>
+            </Row>
+        </Container> */}
+
     </>)
 }
 
