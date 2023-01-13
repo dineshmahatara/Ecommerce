@@ -47,7 +47,7 @@ const Routing = () => {
                         /api/v1/user/:id delete => Delete user
                     */}
                     
-                    <Route path="/admin" element={<AdminAccessControl Component={<AdminLayout />} />}>
+                    <Route path="/admin" element={<AdminAccessControl accessTo="admin" Component={<AdminLayout />} />}>
                         <Route index element={<AdminDashboard />} />
                         <Route path="user" element={<>User Outlet<Outlet /></>}>
                             <Route index element={<>List all user</>} />
@@ -58,7 +58,7 @@ const Routing = () => {
                         </Route>
                     </Route>
 
-                    <Route path="/customer" element={<>Customer Dashboard</>}/>
+                    <Route path="/customer" element={<AdminAccessControl Component={<>Customer Dashboard</>} accessTo="customer" />}/>
                     <Route path="/customer/order" element={<>Customer Current Order</>}/>
                     <Route path="/customer/order/history" element={<>Customer Order History</>}/>
                     

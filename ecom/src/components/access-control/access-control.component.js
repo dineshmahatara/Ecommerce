@@ -1,32 +1,32 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import { auth_svc } from "../../services/auth.service"
 
-export const AdminAccessControl = ({ Component }) => {
-    let token = localStorage.getItem("_mern15_token")
+export const AdminAccessControl = ({ Component, accessTo }) => {
     let [loading, setLoading] = useState(true)
     let navigate = useNavigate();
-    useEffect(() => {
 
-        if (!token) {
-            navigate("/login")
-        } else {
-            // TODO: API INTEGRATION FOR token Verification
-            // user role => 
-            let user_detail = {
-                result: { 
-                    _id: 1, 
-                    name: "Sandesh Bhattarai", 
-                    email: "sandesh.bhattarai@broadwayinfosys.com", 
-                    role: "admin" 
-                }
+    const getUserDetail = useCallback(async () => {
+        try {
+            let response = await auth_svc.getLoggedInUser();
+            
+            if(response.result.role === accessTo) {
+                setLoading(false)
+            } else {
+                toast.warning("You do no have access to admin panel!");
+                navigate("/"+response.result.role);
             }
-            if(user_detail.result.role !== 'admin'){
-                toast.warning("You do not have previliage to access admin panel.")
-            }
-            setLoading(false);
+    
+        }catch(error) {
+            // 
+            console.error(error);
         }
-    }, [])
+    }, [accessTo, navigate])
+
+    useEffect(() => {
+        getUserDetail()
+    }, [getUserDetail])
     return loading ? <>Loading...</> : Component
 
 }

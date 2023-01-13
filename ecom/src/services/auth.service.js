@@ -5,6 +5,7 @@ class AuthService extends HttpService{
         try{
             let response = await this.postRequest("login", data);
             let result = response.result;
+
             let local_user = {
                 name: result.user.name,
                 email: result.user.email,
@@ -14,6 +15,16 @@ class AuthService extends HttpService{
             localStorage.setItem("mern15_token", result.access_token);
             localStorage.setItem("mern15_user", JSON.stringify(local_user))
             return local_user;
+        } catch(error) {
+            throw error;
+        }
+    }
+    getLoggedInUser = async() => {
+        try {
+            let response  = await this.getRequest('/me', {
+                login: true
+            })
+            return response;
         } catch(error) {
             throw error;
         }

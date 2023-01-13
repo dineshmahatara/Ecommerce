@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import axios from "axios";
+
 import { auth_svc } from "../../../services/auth.service";
 
 const LoginPage = () => {
@@ -24,7 +24,7 @@ const LoginPage = () => {
             let user = await auth_svc.login(data);
             navigate("/"+user.role)
         } catch(except) {
-            console.log("AxiosErr: ", except.response)
+            // console.log("AxiosErr: ", except)
         }
     }
 
