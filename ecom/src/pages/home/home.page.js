@@ -78,7 +78,7 @@ const HomePage = () => {
                 <Slider {...settings}>
                     {
                         banner && banner.map((item, index) => (
-                            <div key={index}>
+                            <div className="test" key={index}>
                                 <img src={item.image} alt={item.title} />
                             </div>
                         ))
@@ -100,7 +100,7 @@ const HomePage = () => {
         </Container>
         {/* Offer ends */}
 
-        <div className="bg-light">
+        <div className="bg-light test">
             <Container className="mt-3">
                 <Row>
                     <Col>

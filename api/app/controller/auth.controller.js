@@ -61,14 +61,14 @@ class AuthController{
                         msg: "Logged in successfully"
                     })
                 } else {
-                    next({status: 400, msg: "Password does not match"})
+                    next({status: 400, msg: {password: "Password does not match"}})
                 }
             } else {
-                next({status: 400, msg: "Credentials does not match"})
+                next({status: 400, msg: {email: "Email does not match"}})
             }
         } catch(excepts) {
             console.log("Login: ", excepts);
-            next({status: 400, msg: excepts})
+            next({status: 422, msg: excepts})
         }
         
     }

@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify";
 
 import { auth_svc } from "../../../services/auth.service";
 
 const LoginPage = () => {
     let [data, setData] = useState({
         email: null,
+        password: null
+    })
+    let [errData, setErrData] = useState({
+        email: null, 
         password: null
     })
     // 
@@ -22,9 +27,18 @@ const LoginPage = () => {
         try{
             e.preventDefault();
             let user = await auth_svc.login(data);
+            toast.success("welcome to admin panel!")
             navigate("/"+user.role)
         } catch(except) {
-            // console.log("AxiosErr: ", except)
+            if(except?.response?.status === 400){
+                if(except?.response?.data?.msg) {
+                    setErrData({
+                        ...except.response.data.msg
+                    })
+                }
+            } else {
+                toast.warning(except.response.data.msg);
+            }
         }
     }
 
@@ -53,6 +67,9 @@ const LoginPage = () => {
                             <label className="form-label col-sm-3">Username: </label>
                             <div className="col-sm-9">
                                 <input onChange={handleChange} defaultValue={data.email} type="email" className="form-control form-control-sm" placeholder="Enter your username..." name="email"/>
+                                <span className="text-danger">
+                                    {errData?.email}
+                                </span>
                             </div>
                         </div>
 
@@ -63,6 +80,9 @@ const LoginPage = () => {
                                     onChange={handleChange}
                                 type="password" defaultValue={data.password} size="sm" 
                                 name="password" placeholder="Enter your passwrod..."></Form.Control>
+                                <span className="text-danger">
+                                    {errData?.password}
+                                </span>
                             </Col>
                         </Form.Group>
 

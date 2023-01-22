@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { auth_svc } from "../../services/auth.service"
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 export const AdminAccessControl = ({ Component, accessTo }) => {
     let [loading, setLoading] = useState(true)
     let navigate = useNavigate();
@@ -25,8 +27,23 @@ export const AdminAccessControl = ({ Component, accessTo }) => {
     }, [accessTo, navigate])
 
     useEffect(() => {
-        getUserDetail()
+        // setTimeout(() => {
+            getUserDetail()
+        //}, 3000)
     }, [getUserDetail])
-    return loading ? <>Loading...</> : Component
+    return loading ? <>
+    <ClipLoader
+        color={"#ff0000"}
+        loading={loading}
+        cssOverride={{
+            display: "block",
+            margin: "0 auto",
+            borderColor: "red",
+          }}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </> : Component
 
 }

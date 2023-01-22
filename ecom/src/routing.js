@@ -16,6 +16,9 @@ import "react-toastify/dist/ReactToastify.min.css";
 import RegisterPage from "./pages/home/auth/register.page";
 import HomePageLayout from "./pages/layouts/home-page.layout";
 
+import AdminSliderList from "./pages/admin/slider/slider-list.page";
+import AdminSliderCreate from "./pages/admin/slider/slider-create.page";
+
 const Routing = () => {
     return (<>
         <ToastContainer />
@@ -31,24 +34,15 @@ const Routing = () => {
 
                     <Route path="search/" element={<>Search Page</>} />
                 </Route>
-
-
-                {/* CMS  */}
-                    {/* 
-                        let date = new Date();
-                        let hour = date.getHours();
-                        let minut = date.getMinutes();
-                        let sec = date.getSeconds();
-                        
-                        /api/v1/user/   post => Create
-                        /api/v1/user/   get => List all
-                        /api/v1/user/:id get => Detail fetch
-                        /api/v1/user/:id put => Update 
-                        /api/v1/user/:id delete => Delete user
-                    */}
                     
                     <Route path="/admin" element={<AdminAccessControl accessTo="admin" Component={<AdminLayout />} />}>
                         <Route index element={<AdminDashboard />} />
+
+                        <Route path="sliders" element={<AdminSliderList />}/>
+                        <Route path="slider/create" element={<AdminSliderCreate />}/>
+
+
+
                         <Route path="user" element={<>User Outlet<Outlet /></>}>
                             <Route index element={<>List all user</>} />
                             {/* /admin/user/create , /admin/user/1 */}

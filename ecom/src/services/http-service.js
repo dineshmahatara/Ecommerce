@@ -19,7 +19,10 @@ class HttpService{
     }
     postRequest =async (url,data,config={}) => {
         try{
-            let response = await axiosInstance.post(url, data, config);
+            this.getHeaders(config);
+            let response = await axiosInstance.post(url, data, {
+                headers: this.headers
+            });
             return response;
         } catch(error) {
             throw error;
