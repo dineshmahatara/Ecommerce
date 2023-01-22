@@ -18,6 +18,15 @@ class SliderService extends HttpService{
             throw error;
         }
     }
+
+    deleteSliderById = async (id) => {
+        try{
+            let response = await this.deleteRequest("/banner/"+id, {login:true});
+            return response;
+        } catch(error) {
+            throw error
+        }
+    }
 }
 export const slider_svc = new SliderService();
 export default SliderService;
