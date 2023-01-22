@@ -9,6 +9,7 @@ const LightBox = ({image}) => {
     const onInit = () => {
         //console.log('lightGallery has been initialized');
     };
+    
     return (
         <LightGallery
                 onInit={onInit}
