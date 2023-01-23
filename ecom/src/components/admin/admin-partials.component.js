@@ -78,14 +78,14 @@ export const AdminSidebar = () => {
                             Slider Manage
                         </NavLink>
 
-                        <NavLink className="nav-link" to="/">
+                        <NavLink className="nav-link" to="/admin/brands">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-home"></i>
                             </div>
                             Brand Manage
                         </NavLink>
                         
-                        <NavLink className="nav-link" to="/">
+                        <NavLink className="nav-link" to="/admin/categories">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-home"></i>
                             </div>

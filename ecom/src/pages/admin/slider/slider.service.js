@@ -19,9 +19,27 @@ class SliderService extends HttpService{
         }
     }
 
+    updateSlider = async (data, id) => {
+        try {
+            let response = await this.putRequest('/banner/'+id, data, {login: true, files: true})
+            return response;
+        } catch(error) {
+            throw error;
+        }
+    }
+
     deleteSliderById = async (id) => {
         try{
             let response = await this.deleteRequest("/banner/"+id, {login:true});
+            return response;
+        } catch(error) {
+            throw error
+        }
+    }
+
+    getDetailById = async (id) =>  {
+        try{
+            let response = await this.getRequest("/banner/"+id);
             return response;
         } catch(error) {
             throw error

@@ -18,6 +18,16 @@ import HomePageLayout from "./pages/layouts/home-page.layout";
 
 import AdminSliderList from "./pages/admin/slider/slider-list.page";
 import AdminSliderCreate from "./pages/admin/slider/slider-create.page";
+import AdminSliderEdit from "./pages/admin/slider/slider-edit.page";
+
+import AdminBrandList from "./pages/admin/brand/brand-list.page";
+import AdminBrandCreate from "./pages/admin/brand/brand-create.page";
+import AdminBrandEdit from "./pages/admin/brand/brand-edit.page";
+
+
+import AdminCategoryList from "./pages/admin/category/category-list.page";
+import AdminCategoryCreate from "./pages/admin/category/category-create.page";
+import AdminCategoryEdit from "./pages/admin/category/category-edit.page";
 
 const Routing = () => {
     return (<>
@@ -40,6 +50,15 @@ const Routing = () => {
 
                         <Route path="sliders" element={<AdminSliderList />}/>
                         <Route path="slider/create" element={<AdminSliderCreate />}/>
+                        <Route path="slider/:id" element={<AdminSliderEdit />}/>
+
+
+                        <Route path="brands" element={<AdminBrandList />}/>
+                        <Route path="brand/create" element={<AdminBrandCreate />}/>
+                        <Route path="brand/:id" element={<AdminBrandEdit />}/>
+                        <Route path="categories" element={<AdminCategoryList />}/>
+                        <Route path="category/create" element={<AdminCategoryCreate />}/>
+                        <Route path="category/:id" element={<AdminCategoryEdit />}/>
 
 
 

@@ -1,22 +1,23 @@
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import SliderForm from "./slider-form.component";
-import { slider_svc } from "./slider.service";
+import CategoryForm from "./category-form.component";
+import { category_svc } from "./category.service";
 
-const AdminSliderCreate = () => {
+const AdminCategoryCreate = () => {
     let navigate = useNavigate();
-    const addSlider = async (data) => {
+    const addCategory = async (data) => {
         try{
-            let response = await slider_svc.addSlider(data);
+            let response = await category_svc.addCategory(data);
             toast.success(response.msg)
-            navigate("/admin/sliders")
+            navigate("/admin/categories")
         } catch(err) {
             toast.error(err);
         }
     }
     return (<>
         <div className="container-fluid px-4">
-            <h1 className="mt-4">Slider Create</h1>
+            <h1 className="mt-4">Category Create</h1>
             <ol className="breadcrumb mb-4">
                 <li className="breadcrumb-item ">
                     <NavLink to="/admin">
@@ -24,23 +25,23 @@ const AdminSliderCreate = () => {
                     </NavLink>
                 </li>
                 <li className="breadcrumb-item ">
-                    <NavLink to="/admin/sliders">
-                        Slider Listing
+                    <NavLink to="/admin/categories">
+                        Category Listing
                     </NavLink>
                 </li>
                 <li className="breadcrumb-item active">
-                    Slider Create
+                    Category Create
                 </li>
             </ol>
             
             <div className="card mb-4">
                 <div className="card-header">
                     <i className="fas fa-table me-1"></i>
-                    Slider Form
+                    Category Form
                 </div>
                 <div className="card-body">
                     
-                    <SliderForm submitForm={addSlider}/>
+                    <CategoryForm submitForm={addCategory}/>
                     
                 </div>
             </div>
@@ -48,4 +49,4 @@ const AdminSliderCreate = () => {
     </>)
 }
 
-export default AdminSliderCreate;
+export default AdminCategoryCreate;
