@@ -67,6 +67,29 @@ class UserService{
             throw err;
         }
     }
+
+    getAllCounts = async () => {
+        let all_data = await UserModel.find()
+        return all_data.length;
+    }
+
+    getUsers = async (id, skip, limit) => {
+        return await UserModel.find({
+            _id: {$ne: id}
+        })
+                    .skip(skip)
+                    .limit(limit);
+    }
+
+    deleteById = async (id)=>{
+        return await UserModel.findByIdAndRemove(id)
+    }
+    updateUser = async (id) => {
+        let status = await UserModel.findByIdAndUpdate(id, {
+            $set: this.data
+        })
+        return status;
+    }   
 }
 
 module.exports = UserService;

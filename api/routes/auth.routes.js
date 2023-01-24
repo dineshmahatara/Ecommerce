@@ -14,4 +14,8 @@ app_routes.post("/logout",auth, auth_ctrl.logout)
 
 app_routes.get("/me", auth, auth_ctrl.getLoggedInUser)
 
+// listAllUser
+// changePassword for any user => by id
+// Update user 
+// Delete 
 module.exports= app_routes;

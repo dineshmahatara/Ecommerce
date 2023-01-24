@@ -80,21 +80,21 @@ export const AdminSidebar = () => {
 
                         <NavLink className="nav-link" to="/admin/brands">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-home"></i>
+                                <i className="fas fa-b"></i>
                             </div>
                             Brand Manage
                         </NavLink>
                         
                         <NavLink className="nav-link" to="/admin/categories">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-home"></i>
+                                <i className="fas fa-sitemap"></i>
                             </div>
                             Category Manage
                         </NavLink>
 
-                        <NavLink className="nav-link" to="/">
+                        <NavLink className="nav-link" to="/admin/users">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-home"></i>
+                                <i className="fas fa-users"></i>
                             </div>
                             User Manage
                         </NavLink>

@@ -9,6 +9,7 @@ if(ENVIRONMENT === 'dev'){
     DB_URL = DB.PROTOCOL+"://"+DB.USER+":"+DB.PWD+"@"+DB.HOST+":"+DB.PORT+"/"+DB.NAME;
 
 }
+console.log(DB_URL)
 mongoose.set('strictQuery', false)
 mongoose.connect(DB_URL,{
     autoCreate: true, 

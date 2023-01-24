@@ -29,6 +29,10 @@ import AdminCategoryList from "./pages/admin/category/category-list.page";
 import AdminCategoryCreate from "./pages/admin/category/category-create.page";
 import AdminCategoryEdit from "./pages/admin/category/category-edit.page";
 
+import AdminUserList from "./pages/admin/user/user-list.page";
+import AdminUserCreate from "./pages/admin/user/user-create.page";
+import AdminUserEdit from "./pages/admin/user/user-edit.page";
+
 const Routing = () => {
     return (<>
         <ToastContainer />
@@ -59,12 +63,9 @@ const Routing = () => {
                         <Route path="categories" element={<AdminCategoryList />}/>
                         <Route path="category/create" element={<AdminCategoryCreate />}/>
                         <Route path="category/:id" element={<AdminCategoryEdit />}/>
-
-
-
-                        <Route path="user" element={<>User Outlet<Outlet /></>}>
-                            <Route index element={<>List all user</>} />
-                            {/* /admin/user/create , /admin/user/1 */}
+                        
+                        <Route path="users" element={<><Outlet /></>}>
+                            <Route index element={<AdminUserList />} />
                             <Route path="create" element={<>Create Component</>} />
                             <Route path=":id" element={<>Detail of User</>} />
                             <Route path=":id/edit" element={<>Edit user form</>}/>

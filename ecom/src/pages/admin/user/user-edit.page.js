@@ -1,43 +1,33 @@
 import { useEffect, useCallback, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import CategoryForm from "./category-form.component";
-import { category_svc } from "./category.service";
+import UserForm from "./user-form.component";
+import { user_svc } from "./user.service";
 
-const AdminCategoryEdit = () => {
+const AdminUserEdit = () => {
     let navigate = useNavigate();
     let params = useParams();
     let [detail, setDetail] = useState();
 
-    const updateCategory = async (data) => {
+    const updateUser = async (data) => {
         try {
-            let response = await category_svc.updateCategory(data, params.id);
+            let response = await user_svc.updateUser(data, params.id);
             toast.success(response.msg)
-            navigate("/admin/categories")
+            navigate("/admin/users")
         } catch (err) {
             toast.error(err);
         }
     }
-    const getCategoryDetail = useCallback(
+    const getUserDetail = useCallback(
         async () => {
             try {
-                let response = await category_svc.getDetailById(params.id);
+                let response = await user_svc.getDetailById(params.id);
                 if (response.result) {
-                    let sel_brands = [];
-                    if(response.result?.brands) {
-                        response.result.brands.map((item) => {
-                            sel_brands.push({
-                                value: item._id,
-                                label: item.title
-                            })
-                        })
-                    }
                     setDetail({
-                        name: response.result.name,
+                        title: response.result.title,
                         status: response.result.status,
-                        image: response.result.image,
-                        parent_id: response.result?.parent_id?._id,
-                        brands: sel_brands
+                        link: response.result.link,
+                        image: response.result.image
                     });
                 }
             } catch (err) {
@@ -46,12 +36,12 @@ const AdminCategoryEdit = () => {
         }, [])
 
     useEffect(() => {
-        getCategoryDetail();
+        getUserDetail();
     }, [])
 
     return (<>
         <div className="container-fluid px-4">
-            <h1 className="mt-4">Category Edit</h1>
+            <h1 className="mt-4">User Edit</h1>
             <ol className="breadcrumb mb-4">
                 <li className="breadcrumb-item ">
                     <NavLink to="/admin">
@@ -59,24 +49,24 @@ const AdminCategoryEdit = () => {
                     </NavLink>
                 </li>
                 <li className="breadcrumb-item ">
-                    <NavLink to="/admin/categories">
-                        Category Listing
+                    <NavLink to="/admin/users">
+                        User Listing
                     </NavLink>
                 </li>
                 <li className="breadcrumb-item active">
-                    Category Edit
+                    User Edit
                 </li>
             </ol>
 
             <div className="card mb-4">
                 <div className="card-header">
                     <i className="fas fa-table me-1"></i>
-                    Category Form
+                    User Form
                 </div>
                 <div className="card-body">
 
-                    <CategoryForm
-                        submitForm={updateCategory}
+                    <UserForm
+                        submitForm={updateUser}
                         defaultValue={detail}
                     />
 
@@ -86,4 +76,4 @@ const AdminCategoryEdit = () => {
     </>)
 }
 
-export default AdminCategoryEdit;
+export default AdminUserEdit;
