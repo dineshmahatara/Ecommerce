@@ -426,3 +426,17 @@ Lifecycle
 - constructor()
 - render() 
 - componentDidMount()
+
+
+// Develop an api in BE 
+delete => /product/:product_id/image/:name
+
+=> Product Fetch from product_id
+    let product = ProductModel.findById(req.params.product_id)
+    let all_images = product.images
+    let index = all_images.indexOf(req.params.name)
+    if(index >= 0){
+        all_images.splice(index, 1);
+    }
+    product.images = all_images;
+    product.save();

@@ -42,7 +42,7 @@ const ProductSchemaDef = new mongoose.Schema({
         ref: "Label",
         default: null
     },
-    is_featrued: {
+    is_featured: {
         type: Boolean, 
         default: false
     },

@@ -33,7 +33,7 @@ class ProductController{
             // 100 - 100 * 10/100;
 
             data.actual_price = Number(data.price) - Number(data.price) * Number(data.discount)/100;
-            data.is_featured = !!data.is_featured // !"true" -> !false => true, !!1 => true
+            data.is_featured = (data.is_featured == 1 ? true : false) // !"true" -> !false => true, !!1 => true
             this.product_svc.storeValidate(data, req.auth_user._id);
             let response = await this.product_svc.createProduct();
             res.json({
@@ -111,7 +111,8 @@ class ProductController{
             let current_data = await this.product_svc.findById(req.params.id);
 
             let data = req.body;
-            data.images = current_data.images;
+            data.images = current_data.images;  // add new images along with old
+            // data.images = [];   // replace all the older image with new
 
             if(req.files){
                 req.files.map((item) => {
@@ -136,7 +137,7 @@ class ProductController{
             }
 
             data.actual_price = Number(data.price) - Number(data.price) * Number(data.discount)/100;
-            data.is_featured = !!data.is_featured // !"true" -> !false => true, !!1 => true
+            data.is_featured = (data.is_featured == 1 ? true : false) // !"true" -> !false => true, !!1 => true
             this.product_svc.storeValidate(data);
             let response = await this.product_svc.updateProduct(req.params.id);
             res.json({
@@ -147,6 +148,19 @@ class ProductController{
         }catch(except){
             console.log("UpdateProduct: ", except);
             next({status: 400, msg: except})
+        }
+    }
+
+    deleteImageByname = async(req, res, next) => {
+        try{
+            let res = await this.product_svc.deleteByImageName(req.params.product_id, req.params.image)
+            res.json({
+                status: true, 
+                result: res, 
+                msg: "Image deleted"
+            })
+        } catch(err) {
+            next({status: 400, msg: "Image could not be deleted"})
         }
     }
 }

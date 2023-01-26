@@ -29,9 +29,14 @@ import AdminCategoryList from "./pages/admin/category/category-list.page";
 import AdminCategoryCreate from "./pages/admin/category/category-create.page";
 import AdminCategoryEdit from "./pages/admin/category/category-edit.page";
 
+import AdminProductList from "./pages/admin/product/product-list.page";
+import AdminProductCreate from "./pages/admin/product/product-create.page";
+import AdminProductEdit from "./pages/admin/product/product-edit.page";
+
+
 import AdminUserList from "./pages/admin/user/user-list.page";
-import AdminUserCreate from "./pages/admin/user/user-create.page";
-import AdminUserEdit from "./pages/admin/user/user-edit.page";
+// import AdminUserCreate from "./pages/admin/user/user-create.page";
+// import AdminUserEdit from "./pages/admin/user/user-edit.page";
 
 const Routing = () => {
     return (<>
@@ -56,14 +61,19 @@ const Routing = () => {
                         <Route path="slider/create" element={<AdminSliderCreate />}/>
                         <Route path="slider/:id" element={<AdminSliderEdit />}/>
 
-
                         <Route path="brands" element={<AdminBrandList />}/>
                         <Route path="brand/create" element={<AdminBrandCreate />}/>
                         <Route path="brand/:id" element={<AdminBrandEdit />}/>
+                        
                         <Route path="categories" element={<AdminCategoryList />}/>
                         <Route path="category/create" element={<AdminCategoryCreate />}/>
                         <Route path="category/:id" element={<AdminCategoryEdit />}/>
                         
+                        <Route path="products" element={<AdminProductList />}/>
+                        <Route path="product/create" element={<AdminProductCreate />}/>
+                        <Route path="product/:id" element={<AdminProductEdit />}/>
+                        
+
                         <Route path="users" element={<><Outlet /></>}>
                             <Route index element={<AdminUserList />} />
                             <Route path="create" element={<>Create Component</>} />

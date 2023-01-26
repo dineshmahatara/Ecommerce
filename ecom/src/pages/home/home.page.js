@@ -1,6 +1,5 @@
-import { Accordion, Tab, Nav, Container, Row, Col, Card } from "react-bootstrap"
+import { Nav, Container, Row, Col, Card } from "react-bootstrap"
 
-import { users } from "../../mock/data";
 import "./home.css";
 
 import Slider from "react-slick";
@@ -27,7 +26,7 @@ const HomePage = () => {
     let [banner, setBanner] = useState();
     let [loading, setLoading] = useState(true)
 
-    let data = users.result
+    
     const settings = {
         dots: false,
         infinite: true,
@@ -93,7 +92,7 @@ const HomePage = () => {
             <Row>
                 <Col>
                     <Nav.Link href="/">
-                        <img className="img img-fluid" src={offerImage} />
+                        <img alt="Offer " className="img img-fluid" src={offerImage} />
                     </Nav.Link>
                 </Col>
             </Row>
