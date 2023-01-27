@@ -440,3 +440,32 @@ delete => /product/:product_id/image/:name
     }
     product.images = all_images;
     product.save();
+
+// Two componoment 
+
+// Add to cart/ProductDetail Component
+Frist Component
+    => Button (addtocart trigger)
+        => Create am event which changes the state of MenuComponent
+        => This event will be defined in the Reducer/Redux
+
+
+// Cart Counter/ Menu component
+Second Component
+==> Store change listener / Redux 
+    => Cart change 
+
+
+
+// Store / Redux
+cart => state 
+    // Reducer 
+        -> addToCart() => Listner
+            -> changes/update the cart state
+
+
+** Redux 
+** React-Redux 
+** Thunk / Middleware
+
+** Redux-toolkit

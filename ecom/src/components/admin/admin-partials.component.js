@@ -1,11 +1,14 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom"
 
 // A => <B /> => <C /> => <D  />=> <E />
 // A <= B <= C <= D <= E
 export const AdminTopNav = () => {
-    // TODO: Implement by using Store/Redux
-    let loggedInUser =JSON.parse(localStorage.getItem('mern15_user'));
+    let loggedInUser = useSelector((store) => {
+        return store.user.loggedInUser
+    })
+
     useEffect(() => {
         let className = (localStorage.getItem('sb|sidebar-toggle'));
 
@@ -37,7 +40,7 @@ export const AdminTopNav = () => {
             </button>
             <div className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <span style={{color: "#ffffff"}}>{
-                    loggedInUser.name
+                    loggedInUser?.name
                 }</span>
             </div>
 

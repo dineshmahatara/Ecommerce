@@ -38,62 +38,67 @@ import AdminUserList from "./pages/admin/user/user-list.page";
 // import AdminUserCreate from "./pages/admin/user/user-create.page";
 // import AdminUserEdit from "./pages/admin/user/user-edit.page";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 const Routing = () => {
     return (<>
-        <ToastContainer />
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<HomePageLayout />}>
+        <Provider store={store}>
+            <ToastContainer />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomePageLayout />}>
 
-                    <Route index element={<HomePage />} />
-                    <Route path="login" element={<LoginPage />} />
-                    <Route path="register" element={<RegisterPage />} />
+                        <Route index element={<HomePage />} />
+                        <Route path="login" element={<LoginPage />} />
+                        <Route path="register" element={<RegisterPage />} />
 
-                    <Route path="category/:id" element={<CategoryDetail />}/>
+                        <Route path="category/:id" element={<CategoryDetail />}/>
 
-                    <Route path="search/" element={<>Search Page</>} />
-                </Route>
-                    
-                    <Route path="/admin" element={<AdminAccessControl accessTo="admin" Component={<AdminLayout />} />}>
-                        <Route index element={<AdminDashboard />} />
-
-                        <Route path="sliders" element={<AdminSliderList />}/>
-                        <Route path="slider/create" element={<AdminSliderCreate />}/>
-                        <Route path="slider/:id" element={<AdminSliderEdit />}/>
-
-                        <Route path="brands" element={<AdminBrandList />}/>
-                        <Route path="brand/create" element={<AdminBrandCreate />}/>
-                        <Route path="brand/:id" element={<AdminBrandEdit />}/>
-                        
-                        <Route path="categories" element={<AdminCategoryList />}/>
-                        <Route path="category/create" element={<AdminCategoryCreate />}/>
-                        <Route path="category/:id" element={<AdminCategoryEdit />}/>
-                        
-                        <Route path="products" element={<AdminProductList />}/>
-                        <Route path="product/create" element={<AdminProductCreate />}/>
-                        <Route path="product/:id" element={<AdminProductEdit />}/>
-                        
-
-                        <Route path="users" element={<><Outlet /></>}>
-                            <Route index element={<AdminUserList />} />
-                            <Route path="create" element={<>Create Component</>} />
-                            <Route path=":id" element={<>Detail of User</>} />
-                            <Route path=":id/edit" element={<>Edit user form</>}/>
-                        </Route>
+                        <Route path="search/" element={<>Search Page</>} />
                     </Route>
+                        
+                        <Route path="/admin" element={<AdminAccessControl accessTo="admin" Component={<AdminLayout />} />}>
+                            <Route index element={<AdminDashboard />} />
 
-                    <Route path="/customer" element={<AdminAccessControl Component={<>Customer Dashboard</>} accessTo="customer" />}/>
-                    <Route path="/customer/order" element={<>Customer Current Order</>}/>
-                    <Route path="/customer/order/history" element={<>Customer Order History</>}/>
-                    
-                    
-                    
-                    
-                {/* CMS  */}
+                            <Route path="sliders" element={<AdminSliderList />}/>
+                            <Route path="slider/create" element={<AdminSliderCreate />}/>
+                            <Route path="slider/:id" element={<AdminSliderEdit />}/>
 
-                <Route path="*" element={<ErrorPage error={404}/>} />
-            </Routes>
-        </BrowserRouter>
+                            <Route path="brands" element={<AdminBrandList />}/>
+                            <Route path="brand/create" element={<AdminBrandCreate />}/>
+                            <Route path="brand/:id" element={<AdminBrandEdit />}/>
+                            
+                            <Route path="categories" element={<AdminCategoryList />}/>
+                            <Route path="category/create" element={<AdminCategoryCreate />}/>
+                            <Route path="category/:id" element={<AdminCategoryEdit />}/>
+                            
+                            <Route path="products" element={<AdminProductList />}/>
+                            <Route path="product/create" element={<AdminProductCreate />}/>
+                            <Route path="product/:id" element={<AdminProductEdit />}/>
+                            
+
+                            <Route path="users" element={<><Outlet /></>}>
+                                <Route index element={<AdminUserList />} />
+                                <Route path="create" element={<>Create Component</>} />
+                                <Route path=":id" element={<>Detail of User</>} />
+                                <Route path=":id/edit" element={<>Edit user form</>}/>
+                            </Route>
+                        </Route>
+
+                        <Route path="/customer" element={<AdminAccessControl Component={<>Customer Dashboard</>} accessTo="customer" />}/>
+                        <Route path="/customer/order" element={<>Customer Current Order</>}/>
+                        <Route path="/customer/order/history" element={<>Customer Order History</>}/>
+                        
+                        
+                        
+                        
+                    {/* CMS  */}
+
+                    <Route path="*" element={<ErrorPage error={404}/>} />
+                </Routes>
+            </BrowserRouter>
+        </Provider>
     </>)
 }
 

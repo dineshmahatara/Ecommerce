@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
+import { setLoggedInUser } from "../../../reducers/user.reducer";
 
 import { auth_svc } from "../../../services/auth.service";
 
@@ -15,6 +17,7 @@ const LoginPage = () => {
         password: null
     })
     // 
+    let dispatch = useDispatch();
     let navigate = useNavigate()
     const handleChange = (e)=>{
         // let {name, type, value, checked, files} = e.target;
@@ -27,6 +30,8 @@ const LoginPage = () => {
         try{
             e.preventDefault();
             let user = await auth_svc.login(data);
+            dispatch(setLoggedInUser(user))
+            
             toast.success("welcome to admin panel!")
             navigate("/"+user.role)
         } catch(except) {

@@ -13,7 +13,8 @@ class AuthService extends HttpService{
                 user_id: result.user._id
             };
             localStorage.setItem("mern15_token", result.access_token);
-            localStorage.setItem("mern15_user", JSON.stringify(local_user))
+            // localStorage.setItem("mern15_user", JSON.stringify(local_user))
+            
             return local_user;
         } catch(error) {
             throw error;
