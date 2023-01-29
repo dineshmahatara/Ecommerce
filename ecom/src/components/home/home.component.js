@@ -2,9 +2,15 @@ import { Navbar, Nav, Container, Row, Col } from "react-bootstrap"
 import logo from "../../assets/image/logo.png"
 import { FaMapMarked, FaPhoneAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import {useSelector} from "react-redux";
+import { useEffect } from "react";
 
 export const HeaderComponent = () => {
-    let loggedUser = JSON.parse(localStorage.getItem("mern15_user"));
+    //let loggedUser = JSON.parse(localStorage.getItem("mern15_user"));
+
+    let loggedUser = useSelector((store) =>{
+        return store.user.loggedInUser;
+    })
 
     return (<>
         {/* Nav Section Start */}

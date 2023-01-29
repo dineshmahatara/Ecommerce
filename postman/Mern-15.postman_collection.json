@@ -1,0 +1,798 @@
+{
+	"info": {
+		"_postman_id": "966edb79-3706-4263-9415-c78f708b602d",
+		"name": "Mern-15",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1318483"
+	},
+	"item": [
+		{
+			"name": "brand",
+			"item": [
+				{
+					"name": "Brand store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Apple",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "null",
+									"description": "\"null\"",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/macos/Documents/Images/Logos/apple.svg"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}brand",
+							"host": [
+								"{{url}}brand"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "banner",
+			"item": [
+				{
+					"name": "Banner store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "test banner 1",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "http://localhost:3000",
+									"description": "\"null\"",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/macos/Documents/Images/ecom-banner-2.jpeg"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}banner",
+							"host": [
+								"{{url}}banner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Banner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}banner",
+							"host": [
+								"{{url}}banner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}banner/6397d7559be64a4f384f8f0b",
+							"host": [
+								"{{url}}banner"
+							],
+							"path": [
+								"6397d7559be64a4f384f8f0b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "test banner 2",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "http://google.com",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}banner/639921b33b0553c79f5f354b",
+							"host": [
+								"{{url}}banner"
+							],
+							"path": [
+								"639921b33b0553c79f5f354b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "List all Cats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}category",
+							"host": [
+								"{{url}}category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Android",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "639a7aa479730be07f65413b",
+									"type": "text"
+								},
+								{
+									"key": "brands",
+									"value": "6397d7039be64a4f384f8f08",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/macos/Documents/Images/small-resolution/cat-1.png"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}category",
+							"host": [
+								"{{url}}category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category By id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}category/639a7cfda8ada1dc88f90193",
+							"host": [
+								"{{url}}category"
+							],
+							"path": [
+								"639a7cfda8ada1dc88f90193"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category By id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}category/639a7c2039ee2a2e003f2878",
+							"host": [
+								"{{url}}category"
+							],
+							"path": [
+								"639a7c2039ee2a2e003f2878"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Android SmartPhones",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "639a7aa479730be07f65413b",
+									"type": "text"
+								},
+								{
+									"key": "brands",
+									"value": "6397d7039be64a4f384f8f08",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}category/639a7cfda8ada1dc88f90193",
+							"host": [
+								"{{url}}category"
+							],
+							"path": [
+								"639a7cfda8ada1dc88f90193"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produc",
+			"item": [
+				{
+					"name": "List all Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}product",
+							"host": [
+								"{{url}}product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "OnePlus Nord CE 2 5G 8 GB RAM + 128 GB Storage with 90 Hz AMOLED Display & 65W Warp Charge (Includes 1 Year Screen Breakage Insurance)",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "639a7aa479730be07f65413b,639a7cfda8ada1dc88f90193",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "6397d7039be64a4f384f8f08",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/Users/macos/Documents/Images/Ecom-product/oneplus-1.jpeg",
+										"/Users/macos/Documents/Images/Ecom-product/oneplus-2.jpeg",
+										"/Users/macos/Documents/Images/Ecom-product/oneplus-3.jpeg"
+									]
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "48999",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "65W SUPERVOOC – Accelerated charge velocity shall rocket the 4500mAh battery to a day's power in 15 minutes. Certified by TÜV Rheinland, one shall “Charge & Play” with absolute peace of mind.\nMediatek Dimensity 900 – Powered by a 5G enabled, octa-core monster of a chipset that’s tad more powerful than previous CE, consider this the “Best in class” daily driver for entertainment with its “dragon-slaying” power efficiency, thermal control and support for Wi-Fi 6.\n6.43 inch, 90Hz FHD+ AMOLED Display – Shielded by Corning Gorilla Glass 5, scroll, swipe, and enjoy all your entertainment effortlessly on this HDR10+ certified, OnePlus-worthy display.\nAI-infused Triple Camera – This amazing camera setup comprises of a 64MP main sensor, 119° wide-angle and a 16MP selfie shooter. Powered by inhouse algorithm, imaging in badly or unevenly lit environments shall become so much easier\nAll Flexible – The OnePlus Nord CE 2 is equipped with triple card slots, meaning you have the flexibility to go dual SIM, with an additional micro SD that allows for up to 1TB extendable storage. Also, this phone has a 3.5mm headphone jack\nDesigned by OnePlus – Coming in at 7.8mm thick, weighing 173g, this is THE slimmest OnePlus phone yet, since the 6T.\nOnePlus Quality – Powered by the most stable version of OxygenOS 11, based on Android 11, this device is easily futureproof, boasting 2 Years of Android version updates and 3 years of worth of security patches via OTA\nIn-display fingerprint sensor\nAlexa Hands-Free capable: Download the Alexa app to use Alexa hands-free. Play music, make calls, hear news, open apps, navigate, an more, all using just your voice, while on-the-go",
+									"type": "text"
+								},
+								{
+									"key": "is_featured",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "seller",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}product",
+							"host": [
+								"{{url}}product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}product/639bd145b7b514c9406e53ef",
+							"host": [
+								"{{url}}product"
+							],
+							"path": [
+								"639bd145b7b514c9406e53ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product By id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}product/639bd1e7daf2b1696af4400a",
+							"host": [
+								"{{url}}product"
+							],
+							"path": [
+								"639bd1e7daf2b1696af4400a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "OnePlus Nord CE 2 5G 8 GB RAM + 128 GB Storage with 90 Hz AMOLED Display & 65W Warp Charge (Includes 1 Year Screen Breakage Insurance)",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "639a7aa479730be07f65413b,639a7cfda8ada1dc88f90193",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "6397d7039be64a4f384f8f08",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "48999",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "65W SUPERVOOC – Accelerated charge velocity shall rocket the 4500mAh battery to a day's power in 15 minutes. Certified by TÜV Rheinland, one shall “Charge & Play” with absolute peace of mind.\nMediatek Dimensity 900 – Powered by a 5G enabled, octa-core monster of a chipset that’s tad more powerful than previous CE, consider this the “Best in class” daily driver for entertainment with its “dragon-slaying” power efficiency, thermal control and support for Wi-Fi 6.\n6.43 inch, 90Hz FHD+ AMOLED Display – Shielded by Corning Gorilla Glass 5, scroll, swipe, and enjoy all your entertainment effortlessly on this HDR10+ certified, OnePlus-worthy display.\nAI-infused Triple Camera – This amazing camera setup comprises of a 64MP main sensor, 119° wide-angle and a 16MP selfie shooter. Powered by inhouse algorithm, imaging in badly or unevenly lit environments shall become so much easier\nAll Flexible – The OnePlus Nord CE 2 is equipped with triple card slots, meaning you have the flexibility to go dual SIM, with an additional micro SD that allows for up to 1TB extendable storage. Also, this phone has a 3.5mm headphone jack\nDesigned by OnePlus – Coming in at 7.8mm thick, weighing 173g, this is THE slimmest OnePlus phone yet, since the 6T.\nOnePlus Quality – Powered by the most stable version of OxygenOS 11, based on Android 11, this device is easily futureproof, boasting 2 Years of Android version updates and 3 years of worth of security patches via OTA\nIn-display fingerprint sensor\nAlexa Hands-Free capable: Download the Alexa app to use Alexa hands-free. Play music, make calls, hear news, open apps, navigate, an more, all using just your voice, while on-the-go",
+									"type": "text"
+								},
+								{
+									"key": "is_featured",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "seller",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}product/639bd1e7daf2b1696af4400a",
+							"host": [
+								"{{url}}product"
+							],
+							"path": [
+								"639bd1e7daf2b1696af4400a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cart\": [\n        {\n            \"product_id\": \"639bd145b7b514c9406e53ef\",\n            \"qty\": 3\n        },\n        {\n            \"product_id\": \"63a10d2cfa2baf8745cd7de8\",\n            \"qty\": 2\n        }\n    ],\n    \"discount\": {\n        \"discount_type\": \"percent\",\n        \"amount\": 10\n    },\n    \"service_charge\": 10,\n    \"delivery_charge\": 100,\n    \"is_paid\": true,\n    \"transaction_code\": \"12345abcd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}order",
+							"host": [
+								"{{url}}order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Route",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Customer User",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sandesh@test.com",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Kathmandu",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "customer",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/macos/Documents/Images/small-resolution/cat-1.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}register",
+					"host": [
+						"{{url}}register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register Route - success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sandesh Bhattarai\",\n    \"email\": \"sandesh.bhattarai@broadwayinfosys.com\",\n    \"password\": \"admin123\",\n    \"role\": \"admin\",\n    \"status\": \"active\",\n    \"address\": \"Kathmandu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}register",
+							"host": [
+								"{{url}}register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "205"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"cd-5XWh3wlinZIr+p4+QNsVRQ5dNkE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Nov 2022 01:32:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"name\": \"Sandesh Bhattarai\",\n        \"email\": \"sandesh.bhattarai@broadwayinfosys.com\",\n        \"password\": \"admin123\",\n        \"role\": \"admin\",\n        \"status\": \"active\",\n        \"address\": \"Kathmandu\"\n    },\n    \"status\": true,\n    \"msg\": \"Register data test\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token\", pm.response.json().result.access_token )"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sandesh@test.com\",\n    \"password\": \"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}login",
+					"host": [
+						"{{url}}login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

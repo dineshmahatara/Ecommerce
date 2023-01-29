@@ -25,7 +25,7 @@ export const AdminTopNav = () => {
 
     const logout = (e) => {
         e.preventDefault();
-        localStorage.removeItem('mern15_user');
+        // localStorage.removeItem('mern15_user');
         localStorage.removeItem("mern15_token");
         navigate("/login")
     }
