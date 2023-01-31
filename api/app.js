@@ -39,6 +39,7 @@ const routes = require("./routes/");
 // const path = require("path")
 
 app.use("/assets", express.static("public/"))
+
 app.set("view engine", "pug")
 app.set("views", process.cwd()+"/views")
 

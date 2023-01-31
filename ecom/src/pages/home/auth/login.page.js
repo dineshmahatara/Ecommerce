@@ -25,6 +25,7 @@ const LoginPage = () => {
             ...data,
             [e.target.name]: e.target.value
         })
+        // localstore ===> 
     }
     const handleSubmit = async (e) => {
         try{
@@ -35,6 +36,7 @@ const LoginPage = () => {
             toast.success("welcome to admin panel!")
             navigate("/"+user.role)
         } catch(except) {
+            // toast.(except?.response?.data?.msg)
             if(except?.response?.status === 400){
                 if(except?.response?.data?.msg) {
                     setErrData({

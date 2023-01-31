@@ -58,6 +58,19 @@ class CategoryService{
         })
         return status;
     }   
+
+    getCategoriesByStatus = async (status) =>{
+        try {
+            let response = await CategoryModel.find({
+                status: status
+            })
+            .populate('parent_id')
+            .populate('brands')
+            return response
+        } catch(error) {
+            throw error
+        }
+    }
 }
 
 module.exports = CategoryService;

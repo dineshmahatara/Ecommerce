@@ -15,6 +15,8 @@ const validateType = (req, res, next) => {
     }
 }
 
+router.route("/:type/active", label_ctrl.getActiveLabels)
+
 router.route("/:type")
     .get(validateType, label_ctrl.getLabels)
     .post(validateType, auth, isAdmin, uploader.single('image'), label_ctrl.labelStore)

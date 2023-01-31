@@ -7,6 +7,9 @@ const category_ctrl = new CategoryController();
 
 const router = require("express").Router();
 
+// http://localhost:3005/category/active
+router.get('/active', category_ctrl.getAllActiveCats)
+
 router.route("/")
     .get(category_ctrl.getCategories)
     .post(auth, isAdmin, uploader.single('image'), category_ctrl.categoryStore)

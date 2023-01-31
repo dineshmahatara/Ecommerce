@@ -124,5 +124,18 @@ class CategoryController{
             next({status: 400, msg: except})
         }
     }
+
+    getAllActiveCats = async (req, res, next) => {
+        try{
+            let response = await this.category_svc.getCategoriesByStatus('active');
+            res.json({
+                result: response,
+                status: true, 
+                msg: "Categories fetched"
+            })
+        } catch(error) {
+            next({status: 400, msg: error});
+        }
+    }
 }
 module.exports = CategoryController;

@@ -469,3 +469,41 @@ cart => state
 ** Thunk / Middleware
 
 ** Redux-toolkit
+
+// mongodb setup 
+
+// VPS 
+    // 5$/month
+// Shared 
+    // 10$/year 
+    // 
+
+// Home pae : 
+    ** Category List in home page
+        - active cats list
+    ** Sliders Listing 
+    ** Brand Listing 
+    ** Brand wise Products 
+    ** category wise Products  
+    ** Product Detail from Slug
+    ** Search products 
+    ** Cart Create API 
+    ** Order placement
+
+
+// offer ==> time => starts and end date 
+// list => 
+        offer_end_date >= today's ===> running offer 
+        offer_start_date > today's date  ===> Upcoming 
+        offer_end_date < today's date => expired
+
+
+        custom date range => offer list 
+        from_date, to_date 
+        offer_start_date >= from_date && offer_end_date <= to_date
+
+npm 
+yarn 
+
+create react-app dir 
+    => 

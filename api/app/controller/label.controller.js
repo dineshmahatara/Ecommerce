@@ -30,6 +30,7 @@ class LabelController{
             next({status: 400, msg: except})
         }
     }
+
     getLabels =async (req, res, next) => {
         try{
             let paginate = {
@@ -38,7 +39,28 @@ class LabelController{
                 current_page: req.query.page ? parseInt(req.query.page) : 1
             };
             let skip = (paginate.current_page-1) * paginate.per_page;
-            let data = await this.label_svc.getLabels(req.params.type, skip, paginate.per_page);
+            let data = await this.label_svc.getLabels({type: req.params.type}, skip, paginate.per_page);
+            res.json({
+                result: data, 
+                status: true, 
+                paginate: paginate,
+                msg: "Data fetched"
+            })
+        } catch(except) {
+            console.log("List Label: ", except)
+            next({status: 400, msg: except})
+        }
+    }
+
+    getActiveLabels = async (req, res, next) => {
+        try{
+            let paginate = {
+                total_count: await this.label_svc.getAllCounts(req.params.type),
+                per_page: (req.query.per_page) ? parseInt(req.query.per_page) : 10,
+                current_page: req.query.page ? parseInt(req.query.page) : 1
+            };
+            let skip = (paginate.current_page-1) * paginate.per_page;
+            let data = await this.label_svc.getLabels({type: req.params.type, status: 'active'}, skip, paginate.per_page);
             res.json({
                 result: data, 
                 status: true, 

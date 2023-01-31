@@ -1,3 +1,4 @@
+import axiosInstance from "../config/http-request";
 import HttpService from "./http-service";
 
 class AuthService extends HttpService{
