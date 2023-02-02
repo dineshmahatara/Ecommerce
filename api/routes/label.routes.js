@@ -15,7 +15,7 @@ const validateType = (req, res, next) => {
     }
 }
 
-router.route("/:type/active", label_ctrl.getActiveLabels)
+router.get("/:type/active", label_ctrl.getActiveLabels)
 
 router.route("/:type")
     .get(validateType, label_ctrl.getLabels)

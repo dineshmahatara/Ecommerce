@@ -1,50 +1,36 @@
-import { Nav, Container, Row, Col, Card } from "react-bootstrap"
+import { Nav, Container, Row, Col } from "react-bootstrap"
 
 import "./home.css";
-
 import offerImage from "../../assets/image/offer-image.gif";
-import cat1 from "../../assets/image/cat-1.jpeg";
+import HomePageBanner from "../../components/home/banner/home-banner.component";
+import CategoryListCardComponent from "../../components/home/category/category-list-card.component";
+import BrandCardListComponent from "../../components/home/brand/brand-cart-list.component";
+import ProductListGrid from "../../components/home/product/list-product-grid.component";
+import { useState, useEffect, useCallback } from "react";
 
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import SliderComponent from "../../components/home/slider.component";
 import { home_svc } from "../../services/home.service";
 
-// username, password => single state variable => two state var 
-// input defaultValue= username , password 
-// <input type="email" defaultValue={data.email} />
-
 const HomePage = () => {
-    let [banner] = useState();    
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        autoplay: true
-    };
+    let [allProduct, setAllProduct] = useState();    
 
-    const getActiveBanners = async () => {
-        // TODO: API Call to get banners
-        try{
-            let response = await home_svc.listAllBanners();
-            
-        } catch(err) {
-            console.error(err);
+    const getAllProducts = useCallback(async () => {
+        try {
+            let response = await home_svc.getAllProduct()
+            if(response) {
+                setAllProduct(response)
+            }
+        } catch(err){
+            console.error(err)
         }
-    }
+    }, [],)
+    
+
     useEffect(() => {
-        getActiveBanners();
+        getAllProducts()
     }, [])
     return (<>
         
-        <SliderComponent 
-            settings={settings}
-            data={banner}
-            loading={false}
-        />
+        <HomePageBanner />
 
         {/* Offer */}
         <Container>
@@ -69,159 +55,45 @@ const HomePage = () => {
                 </Row>
                 <hr />
                 <Row>
-                    <Col>
-                        <Card >
-                            <NavLink to="/category/1">
-                                <Card.Img variant="top" src={cat1} />
-                            </NavLink>
-                            <Card.Body>
-                                <Card.Title>
-                                    <NavLink to="/category/1">
-                                        Card Title
-                                    </NavLink>
-                                </Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card >
-                            <Card.Img variant="top" src={cat1} />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card >
-                            <Card.Img variant="top" src={cat1} />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card >
-                            <Card.Img variant="top" src={cat1} />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card >
-                            <Card.Img variant="top" src={cat1} />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card >
-                            <Card.Img variant="top" src={cat1} />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-
+                    <CategoryListCardComponent />
                 </Row>
             </Container>
         </div>
 
-        {/* <Container>
-            <Row>
+        <Container className="my-5 bg-light py-3">
+            <Row className="py-2">
                 <Col>
-                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                        <Row>
-                            <Col sm={3}>
-                                <Nav variant="pills" className="flex-column">
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
-                            </Col>
-                            <Col sm={9}>
-                                <Tab.Content>
-                                    <Tab.Pane eventKey="first">
-                                        <Accordion defaultActiveKey="0">
-
-                                            <Accordion.Item eventKey="0">
-                                                <Accordion.Header>Accordion Item #1</Accordion.Header>
-                                                <Accordion.Body>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-                                            <Accordion.Item eventKey="1">
-                                                <Accordion.Header>Accordion Item #2</Accordion.Header>
-                                                <Accordion.Body>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-
-                                            <Accordion.Item eventKey="2">
-                                                <Accordion.Header>Accordion Item #2</Accordion.Header>
-                                                <Accordion.Body>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-                                        </Accordion>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="second">
-                                        <Accordion defaultActiveKey="0">
-
-                                            <Accordion.Item eventKey="0">
-                                                <Accordion.Header>Accordion Item #1</Accordion.Header>
-                                                <Accordion.Body>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-                                        </Accordion>
-                                    </Tab.Pane>
-                                </Tab.Content>
-                            </Col>
-                        </Row>
-                    </Tab.Container>
-
-
-
+                    <h4 className="text-center">
+                        All Brands
+                    </h4>
                 </Col>
             </Row>
-        </Container> */}
+            <hr />
+            <Row className="py-3">
+                <BrandCardListComponent />
+            </Row>
+        </Container>
 
+
+        <Container className="bg-light my-3">
+            <Row className="py-3">
+                <Col>
+                    <h4>Product Lists</h4>
+                </Col>
+            </Row>
+            <hr />
+
+            {
+                allProduct && <ProductListGrid 
+                        allProduct={allProduct}
+                    />
+            }
+
+
+
+           
+                    
+        </Container>
     </>)
 }
 

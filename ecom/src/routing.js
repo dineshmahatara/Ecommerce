@@ -7,7 +7,6 @@ import "./assets/css/global.css"
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/home/auth/login.page"
 import ErrorPage from "./pages/common/error.page";
-import CategoryDetail from "./pages/home/category/category-detail.page";
 import AdminLayout from "./pages/layouts/admin.layout";
 import AdminDashboard from "./pages/admin/dashboard/admin-dashboard.page";
 import { AdminAccessControl } from "./components/access-control/access-control.component";
@@ -38,6 +37,10 @@ import AdminUserList from "./pages/admin/user/user-list.page";
 // import AdminUserCreate from "./pages/admin/user/user-create.page";
 // import AdminUserEdit from "./pages/admin/user/user-edit.page";
 
+import CategoryDetail from "./pages/home/category/category-detail.page";
+import BrandDetail from "./pages/home/brand/brand-detail.page";
+import ProductDetailPage from "./pages/home/product/product-detail.page";
+
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -54,6 +57,13 @@ const Routing = () => {
                         <Route path="register" element={<RegisterPage />} />
 
                         <Route path="category/:id" element={<CategoryDetail />}/>
+                        
+                        <Route path="brand/:slug" element={<BrandDetail />} />
+                        <Route path="category/:slug" element={<CategoryDetail />} />
+                        <Route path="product/:slug" element={<ProductDetailPage />} />
+
+                        <Route path="cart" element={<>Cart list</>} />
+                        <Route path="checkout" element={<>Checkout</>} />
 
                         <Route path="search/" element={<>Search Page</>} />
                     </Route>

@@ -34,7 +34,6 @@ class LabelService{
     }
 
     getLabels = async (filter, skip, limit) => {
-        
         return await LabelModel.find(filter)
                     .skip(skip)
                     .limit(limit);

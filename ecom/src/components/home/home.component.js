@@ -2,15 +2,20 @@ import { Navbar, Nav, Container, Row, Col } from "react-bootstrap"
 import logo from "../../assets/image/logo.png"
 import { FaMapMarked, FaPhoneAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import {useSelector} from "react-redux";
-import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux";
+import { logoutUser } from "../../reducers/user.reducer";
 
 export const HeaderComponent = () => {
     //let loggedUser = JSON.parse(localStorage.getItem("mern15_user"));
+    let dispatch = useDispatch();
 
     let loggedUser = useSelector((store) =>{
         return store.user.loggedInUser;
     })
+
+    const logout = () => {
+        dispatch(logoutUser())
+    }
 
     return (<>
         {/* Nav Section Start */}
@@ -42,7 +47,7 @@ export const HeaderComponent = () => {
                     {
                         loggedUser ? <>
                             <NavLink className={"nav-link"} to={"/"+loggedUser.role}>{loggedUser.name}</NavLink>
-                            <Nav.Link href="#pricing">Logout</Nav.Link>
+                            <Nav.Link href="#pricing" onClick={logout}>Logout</Nav.Link>
                         </> : <>
                             <NavLink className={"nav-link"} to="/login">Login</NavLink>
                             <NavLink className={"nav-link"} to="/register">Register</NavLink>

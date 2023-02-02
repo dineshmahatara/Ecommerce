@@ -25,8 +25,11 @@ const UserSlicer = createSlice({
     },
     reducers: {
         setLoggedInUser: (state, action) => {
-            console.log("Action: ", action);
             state.loggedInUser = action.payload
+        },
+        logoutUser: (state, action) => {
+            localStorage.removeItem("mern15_token")
+            state.loggedInUser = null;
         }
     },
     extraReducers: (builders) => {
@@ -40,5 +43,5 @@ const UserSlicer = createSlice({
     }
 })
 
-export const {setLoggedInUser} = UserSlicer.actions;
+export const {setLoggedInUser, logoutUser} = UserSlicer.actions;
 export default UserSlicer.reducer;
