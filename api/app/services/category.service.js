@@ -71,6 +71,17 @@ class CategoryService{
             throw error
         }
     }
+
+    getCategoryByFilter = async (filter) => {
+        try{
+            let result = await CategoryModel.find(filter)
+            .populate('parent_id')
+            .populate('brands');
+            return result;
+        } catch(err){
+            throw err
+        }
+    }
 }
 
 module.exports = CategoryService;

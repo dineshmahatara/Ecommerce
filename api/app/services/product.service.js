@@ -80,6 +80,35 @@ class ProductService{
         product.images = all_images;
         return product.save();
     }
+
+    getProductByCatId = async(cat_id) => {
+        try {
+            let products = await ProductModel.find({
+                category_id: {$in: [cat_id]}
+            })
+            .populate("category_id")
+                .populate("brand")
+                .populate("seller")
+                .populate("created_by");
+            return products;
+        } catch(err) {
+            throw err;
+        }
+    }
+
+    getProductBySlug = async (slug) => {
+        try {
+            let products = await ProductModel.findOne({
+                slug: slug
+            }).populate("category_id")
+            .populate("brand")
+            .populate("seller")
+            .populate("created_by");
+            return products;
+        } catch(err) {
+            throw err;
+        }
+    }
 }
 
 module.exports = ProductService;

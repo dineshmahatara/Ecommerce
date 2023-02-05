@@ -3,6 +3,7 @@ import SingleProductGrid from "./single-product-grid.component";
 import prod4 from "../../../assets/image/product-4.jpeg";
 
 const ProductListGrid = ({allProduct}) => {
+    console.log("allProduct", allProduct);
     return (<>
         <Row xs={1} md={4} className="g-4">
                 {

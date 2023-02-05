@@ -43,6 +43,7 @@ import ProductDetailPage from "./pages/home/product/product-detail.page";
 
 import { Provider } from "react-redux";
 import store from "./store";
+import CustomerLayout from "./pages/customer/customer.layout";
 
 const Routing = () => {
     return (<>
@@ -56,11 +57,9 @@ const Routing = () => {
                         <Route path="login" element={<LoginPage />} />
                         <Route path="register" element={<RegisterPage />} />
 
-                        <Route path="category/:id" element={<CategoryDetail />}/>
-                        
                         <Route path="brand/:slug" element={<BrandDetail />} />
                         <Route path="category/:slug" element={<CategoryDetail />} />
-                        <Route path="product/:slug" element={<ProductDetailPage />} />
+                        <Route path="product-detail/:slug" element={<ProductDetailPage />} />
 
                         <Route path="cart" element={<>Cart list</>} />
                         <Route path="checkout" element={<>Checkout</>} />
@@ -96,10 +95,10 @@ const Routing = () => {
                             </Route>
                         </Route>
 
-                        <Route path="/customer" element={<AdminAccessControl Component={<>Customer Dashboard</>} accessTo="customer" />}/>
-                        <Route path="/customer/order" element={<>Customer Current Order</>}/>
-                        <Route path="/customer/order/history" element={<>Customer Order History</>}/>
-                        
+                        <Route path="/customer" element={<AdminAccessControl Component={<CustomerLayout />} accessTo="customer" />}>
+                            <Route path="order" element={<>Customer Current Order</>}/>
+                            <Route path="order-history" element={<>Customer Order History</>}/>
+                        </Route>
                         
                         
                         

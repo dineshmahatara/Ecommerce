@@ -1,8 +1,10 @@
 const slugify = require("slugify");
+const ProductService = require("../services/product.service");
 const CategoryService = require("../services/category.service");
 class CategoryController{
     constructor() {
         this.category_svc = new CategoryService();
+        this.product_svc = new ProductService();
     }
     categoryStore = async(req, res, next) =>{
         try{
@@ -135,6 +137,30 @@ class CategoryController{
             })
         } catch(error) {
             next({status: 400, msg: error});
+        }
+    }
+
+    getProductBycatSlug = async (req, res, next) => {
+        try{
+            let cat_slug = req.params.slug;
+            let response = await this.category_svc.getCategoryByFilter({slug: cat_slug});
+            
+            if(response){
+                let category = response[0];
+                let products = await this.product_svc.getProductByCatId(category._id);
+                res.json({
+                    result: {
+                        category, 
+                        products
+                    },
+                    status: true, 
+                    msg: "Product fetched"
+                })
+            } else {
+                throw response;
+            }
+        } catch(err) {
+            next({status: 400, msg: err})
         }
     }
 }

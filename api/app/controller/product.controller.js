@@ -88,6 +88,24 @@ class ProductController{
         }
     }
 
+    getProductBySlug = async (req, res, next) => {
+        try{
+            let data = await this.product_svc.getProductBySlug(req.params.slug)
+            if(data) {
+                res.json({
+                    result: data, 
+                    status: true,
+                    msg: "Data fetched"
+                })
+            } else {
+                next({status: 404, msg: "Data does not exists"})
+            }
+        } catch(except) {
+            console.log("Fetch By id: ", except);
+            next({status: 400, msg: except})
+        }
+    }
+
     deleteById = async (req, res, next) => {
         try{
             let data = await this.product_svc.deleteById(req.params.id)

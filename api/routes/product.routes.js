@@ -6,6 +6,7 @@ const ProductController = require("../app/controller/product.controller");
 const product_ctrl = new ProductController();
 
 const router = require("express").Router();
+router.get("/byslug/:slug", product_ctrl.getProductBySlug);
 
 router.route("/")
     .get(product_ctrl.getProducts)

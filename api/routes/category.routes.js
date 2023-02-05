@@ -9,6 +9,7 @@ const router = require("express").Router();
 
 // http://localhost:3005/category/active
 router.get('/active', category_ctrl.getAllActiveCats)
+router.get("/:slug", category_ctrl.getProductBycatSlug);
 
 router.route("/")
     .get(category_ctrl.getCategories)
