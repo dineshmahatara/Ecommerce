@@ -13,6 +13,18 @@ export const HeaderComponent = () => {
         return store.user.loggedInUser;
     })
 
+    let cartItemCount = useSelector((store) => {
+        
+        if(store.cart.cart && store.cart.cart.length){
+            let count = 0;
+            store.cart.cart.map((item) => {
+                count += Number(item.qty);
+            })
+            return count;
+        }
+    })
+    
+
     const logout = () => {
         dispatch(logoutUser())
     }
@@ -42,7 +54,7 @@ export const HeaderComponent = () => {
                     <Nav.Link href="#pricing">Products</Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="/cart">Cart (0)</Nav.Link>
+                    <Nav.Link href="/cart">Cart ({cartItemCount})</Nav.Link>
 
                     {
                         loggedUser ? <>

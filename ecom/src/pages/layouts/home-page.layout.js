@@ -3,6 +3,7 @@ import { FooterComponent, HeaderComponent } from "../../components/home/home.com
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { getLoggedInUser } from "../../reducers/user.reducer"
+import { initilizeCart } from "../../reducers/cart.reducer"
 
 const HomePageLayout = () => {
     // token 
@@ -13,6 +14,7 @@ const HomePageLayout = () => {
 
     useEffect(() => {
         dispatch(getLoggedInUser({}))
+        dispatch(initilizeCart())
     }, [])
     return (<>
         <HeaderComponent />

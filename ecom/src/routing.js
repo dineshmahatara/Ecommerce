@@ -45,6 +45,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import CustomerLayout from "./pages/customer/customer.layout";
 
+import CartList from "./pages/home/cart/cart-list.page";
+
 const Routing = () => {
     return (<>
         <Provider store={store}>
@@ -61,7 +63,7 @@ const Routing = () => {
                         <Route path="category/:slug" element={<CategoryDetail />} />
                         <Route path="product-detail/:slug" element={<ProductDetailPage />} />
 
-                        <Route path="cart" element={<>Cart list</>} />
+                        <Route path="cart" element={<CartList />} />
                         <Route path="checkout" element={<>Checkout</>} />
 
                         <Route path="search/" element={<>Search Page</>} />

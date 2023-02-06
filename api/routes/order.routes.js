@@ -5,6 +5,7 @@ const OrderController = require("../app/controller/order.controller");
 
 const order_ctrl = new OrderController;
 
+router.post("/detail", order_ctrl.getCartDetail);
 router.post("/", auth, isCustomer, order_ctrl.createOrder);
 
 module.exports = router;

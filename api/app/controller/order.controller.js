@@ -90,6 +90,47 @@ class OrderController{
             next({status: 400, msg: except})
         }
     }
+
+    getCartDetail = async (req, res, next)=>{
+        try {
+            const payload = req.body.cart;
+            let cart = [];
+            console.log(payload);
+            let cart_product_ids = payload.map((item) => item.product_id); // [product_id, product_id]
+
+            let cart_product = await ProductModel.find({
+                _id: {
+                    $in: cart_product_ids
+                }
+            })
+            
+            cart_product.map((prod) => {
+                let curr_qty = 0
+                payload.map((item) => {
+                    if(prod._id.equals(item.product_id)) {
+                        curr_qty = Number(item.qty)
+                    }
+                });
+                let item_total = curr_qty * prod.actual_price;
+                let single_item = {
+                    product_id: prod._id,
+                    product_name: prod.name,
+                    actual_price: prod.actual_price,
+                    qty: curr_qty,
+                    total_amt: item_total
+                }
+                cart.push(single_item);
+            })
+            return res.json({
+                result: cart,
+                status: true, 
+                msg: "Cart Detail"
+            })
+        }catch(except) {
+            console.log("Here: ", except)
+            next({status: 400, msg: except})
+        }
+    }
 }
 
 module.exports = OrderController;
