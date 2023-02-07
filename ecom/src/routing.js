@@ -46,6 +46,7 @@ import store from "./store";
 import CustomerLayout from "./pages/customer/customer.layout";
 
 import CartList from "./pages/home/cart/cart-list.page";
+import Checkout from "./pages/home/cart/checkout.page";
 
 const Routing = () => {
     return (<>
@@ -64,9 +65,10 @@ const Routing = () => {
                         <Route path="product-detail/:slug" element={<ProductDetailPage />} />
 
                         <Route path="cart" element={<CartList />} />
-                        <Route path="checkout" element={<>Checkout</>} />
+                        <Route path="checkout" element={<AdminAccessControl Component={<Checkout />} accessTo="customer" />} />
 
                         <Route path="search/" element={<>Search Page</>} />
+                        <Route path={"payment/"} element={<>Khalti return url</>} />
                     </Route>
                         
                         <Route path="/admin" element={<AdminAccessControl accessTo="admin" Component={<AdminLayout />} />}>

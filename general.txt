@@ -507,3 +507,32 @@ yarn
 
 create react-app dir 
     => 
+
+
+Purchase Domain and Hosting 
+    -> Shared Hosting (Not recommended)
+        - already setup all the settings 
+    -> Cloud hosting (recommended)
+        - Empty server 
+            - node install 
+            - server run nginx/apache
+            - databse 
+            - smtp 
+        - linux os 
+            - ubuntu/centos 
+
+        ==> /var/www/html/Frontend upload
+        ==> /var/www/html/BE folder 
+
+        ===> SSH 
+            - putty , gitbash
+            - terminal, terminal
+
+            - ssh username@domain/ip
+
+            .. 
+                /etc/apache2/sites-enabled/api.xyz.com.conf 
+                document_root => /var/www/html/api
+                a2ensite api.xyz.com.conf 
+                /etc/hosts 
+                ip api.xyz.com 

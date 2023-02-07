@@ -100,7 +100,8 @@ app.use((error, req, res, next) => {
         msg: msg
     })
 })
-server.listen(3005, 'localhost', (err) => {
+// server.listen(3005, 'localhost', (err) => {
+server.listen(process.env.PORT || 80, 'api.abc.com', (err) => {
     if(!err) {
         console.log("Server is listening to port 3005");
         console.log("Press CTRL + C to disconnect to the server...")
