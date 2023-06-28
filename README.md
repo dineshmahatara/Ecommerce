@@ -1,4 +1,4 @@
-# Safalta -Delivery service
+# Ecommerce Site
 
 
 ## Project setup
@@ -20,7 +20,7 @@ Client server/nodejs
 * Formik & Yup for Form Validation in React
 
 ## Features
-- [ ] User
-  - [ ] Login
-- [ ] Rider
+-[x] Creating Product
+-[x] Creating Brand
+-[x] Creating Items
   
