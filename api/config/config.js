@@ -11,7 +11,7 @@ const Config ={
     DB: {
         PROTOCOL: "mongodb",
         HOST: "127.0.0.1",
-        NAME: "mern15",
+        NAME: "Ecommerce",
         USER: "",
         PWD: "",
         PORT: 27017
